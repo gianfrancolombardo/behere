@@ -1,0 +1,98 @@
+---
+import Button from '../ui/Button.astro';
+import TrustBar from '../ui/TrustBar.astro';
+import PlaceholderImage from '../ui/PlaceholderImage.astro';
+import PilotForm from '../forms/PilotForm.astro';
+import type { LandingContent } from '../../content/types';
+
+interface Props {
+  hero: LandingContent['hero'];
+  variant: 'b2b' | 'b2c';
+  pilotForm?: LandingContent['pilotForm'];
+}
+
+const { hero, variant, pilotForm } = Astro.props;
+const isB2B = variant === 'b2b';
+---
+
+<section class="relative overflow-hidden pb-20 pt-10 md:pb-28 md:pt-16">
+  <div class="stage-glow" aria-hidden="true"></div>
+
+  <div class="container-main relative z-10">
+    <div class:list={['grid gap-12', isB2B ? 'lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-8' : 'lg:grid-cols-[1fr_0.85fr] lg:items-center lg:gap-10']}>
+      <div class:list={['flex flex-col gap-6', !isB2B && 'lg:pt-6']}>
+        {
+          hero.tagline && (
+            <p class="font-display text-sm font-bold uppercase tracking-[0.14em] text-accent">
+              {hero.tagline}
+            </p>
+          )
+        }
+        <h1 class="max-w-xl font-display text-5xl font-bold leading-[1.02] tracking-tight md:text-6xl lg:text-[3.75rem]">
+          {hero.headline}
+        </h1>
+        <p class="max-w-md text-base leading-relaxed text-text-muted md:text-lg">
+          {hero.subheadline}
+        </p>
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Button
+            variant="primary"
+            dataCta="hero-primary"
+            pilotScroll={isB2B}
+            betaTrigger={!isB2B}
+          >
+            {hero.primaryCta}
+          </Button>
+          <Button variant="ghost" href={hero.secondaryCtaHref} dataCta="hero-secondary">
+            {hero.secondaryCta}
+          </Button>
+        </div>
+        <TrustBar items={hero.trustBar} />
+      </div>
+
+      {
+        isB2B && pilotForm && (
+          <div class="relative lg:pt-2">
+            <div class="ticket rotate-1 shadow-[0_30px_60px_-25px_rgba(58,0,102,0.6)] transition-transform duration-500 hover:rotate-0">
+              <div class="flex items-center justify-between px-6 pt-5">
+                <span class="chip-ticket">Acceso piloto</span>
+                <span class="font-display text-xs font-bold text-text-muted">01 / 5</span>
+              </div>
+              <div class="ticket-notch mx-6 mt-5"></div>
+              <div class="p-6 pt-6 md:p-7">
+                <PilotForm
+                  bare
+                  actTypeOptions={pilotForm.actTypeOptions}
+                  microcopy={pilotForm.microcopy}
+                  successMessage={pilotForm.successMessage}
+                />
+              </div>
+            </div>
+            {hero.microcopy && (
+              <p class="mt-4 text-center text-xs text-text-muted lg:text-left">{hero.microcopy}</p>
+            )}
+          </div>
+        )
+      }
+
+      {
+        !isB2B && (
+          <div class="relative mx-auto w-full max-w-sm lg:mx-0">
+            <PlaceholderImage
+              aspect="portrait"
+              alt="Fans viviendo un concierto en vivo"
+              priority
+              tilt="right"
+            />
+          </div>
+        )
+      }
+    </div>
+
+    {
+      isB2B && (
+        <div class="mt-14 hairline"></div>
+      )
+    }
+  </div>
+</section>

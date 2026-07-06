@@ -1,0 +1,42 @@
+---
+import type { LandingContent } from '../../content/types';
+
+interface Props {
+  faq: LandingContent['faq'];
+}
+
+const { faq } = Astro.props;
+---
+
+<section id="faq" class="section-padding bg-surface/20">
+  <div class="container-main">
+    <h2 class="reveal font-display text-3xl font-bold md:text-4xl">Preguntas frecuentes</h2>
+
+    <div class="mt-12 border-t border-border">
+      {
+        faq.items.map((item, index) => (
+          <details class="reveal group border-b border-border">
+            <summary class="flex cursor-pointer list-none items-start gap-5 py-6 [&::-webkit-details-marker]:hidden">
+              <span class="font-display text-sm font-bold text-purple-muted/60" aria-hidden="true">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span class="flex-1 font-display text-base font-semibold text-text transition-colors group-hover:text-purple-muted md:text-lg">
+                {item.question}
+              </span>
+              <span
+                class="relative mt-1.5 h-4 w-4 shrink-0 text-text-muted transition-transform duration-300 group-open:rotate-45"
+                aria-hidden="true"
+              >
+                <span class="absolute left-1/2 top-1/2 h-4 w-px -translate-x-1/2 -translate-y-1/2 bg-current" />
+                <span class="absolute left-1/2 top-1/2 h-px w-4 -translate-x-1/2 -translate-y-1/2 bg-current" />
+              </span>
+            </summary>
+            <div class="max-w-2xl pb-6 pl-10 text-sm leading-relaxed text-text-muted md:pl-11">
+              {item.answer}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

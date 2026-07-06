@@ -1,0 +1,53 @@
+---
+import {
+  EyeOff,
+  Users,
+  PackageX,
+  Shield,
+  TrendingUp,
+  QrCode,
+  Smartphone,
+  Image,
+  Share2,
+  Heart,
+  Video,
+  Trophy,
+  Star,
+  Mic2,
+  MonitorOff,
+  Music,
+  Sparkles,
+} from '@lucide/astro';
+
+interface Props {
+  name: string;
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 24, class: className = '' } = Astro.props;
+
+const icons: Record<string, typeof Shield> = {
+  'eye-off': EyeOff,
+  users: Users,
+  'package-x': PackageX,
+  shield: Shield,
+  'trending-up': TrendingUp,
+  'qr-code': QrCode,
+  smartphone: Smartphone,
+  image: Image,
+  'share-2': Share2,
+  heart: Heart,
+  video: Video,
+  trophy: Trophy,
+  star: Star,
+  'mic-2': Mic2,
+  'monitor-off': MonitorOff,
+  music: Music,
+  sparkles: Sparkles,
+};
+
+const IconComponent = icons[name] ?? Sparkles;
+---
+
+<IconComponent size={size} class={className} aria-hidden="true" />

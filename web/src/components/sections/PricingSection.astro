@@ -1,0 +1,32 @@
+---
+import type { LandingContent } from '../../content/types';
+
+interface Props {
+  pricing: NonNullable<LandingContent['pricing']>;
+}
+
+const { pricing } = Astro.props;
+---
+
+<section class="section-padding bg-surface/20">
+  <div class="container-main">
+    <h2 class="reveal font-display text-3xl font-bold md:text-4xl">{pricing.title}</h2>
+
+    <dl class="mt-10 grid gap-x-12 gap-y-8 md:mt-12 md:grid-cols-2">
+      {
+        pricing.rows.map((row, index) => (
+          <div
+            class:list={['reveal border-l-2 border-purple-glow/50 pl-5', index === 1 && 'reveal-delay-1']}
+          >
+            <dt class="font-display text-base font-semibold text-text">{row.concept}</dt>
+            <dd class="mt-1.5 text-sm leading-relaxed text-text-muted">{row.detail}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <p class="reveal mt-10 max-w-3xl font-display text-lg font-semibold text-text md:mx-auto md:text-center md:text-xl">
+      {pricing.closing}
+    </p>
+  </div>
+</section>

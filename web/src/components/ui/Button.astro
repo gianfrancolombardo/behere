@@ -1,0 +1,54 @@
+---
+interface Props {
+  variant?: 'primary' | 'ghost' | 'secondary';
+  href?: string;
+  type?: 'button' | 'submit';
+  class?: string;
+  dataCta?: string;
+  betaTrigger?: boolean;
+  pilotScroll?: boolean;
+  [key: string]: unknown;
+}
+
+const {
+  variant = 'primary',
+  href,
+  type = 'button',
+  class: className = '',
+  dataCta,
+  betaTrigger = false,
+  pilotScroll = false,
+  ...rest
+} = Astro.props;
+
+const base =
+  'inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-glow disabled:opacity-50 active:scale-[0.98]';
+
+const variants = {
+  primary:
+    'bg-accent text-bg hover:bg-accent-dim hover:shadow-[0_0_28px_rgba(16,255,94,0.3)]',
+  ghost:
+    'border border-border bg-transparent text-text hover:border-purple-glow hover:bg-purple-glow/10',
+  secondary:
+    'bg-purple-glow/20 text-text hover:bg-purple-glow/30 border border-purple-glow/30',
+};
+
+const classes = `${base} ${variants[variant]} ${className}`;
+const dataAttrs = {
+  ...(dataCta ? { 'data-cta': dataCta } : {}),
+  ...(betaTrigger ? { 'data-beta-trigger': '' } : {}),
+  ...(pilotScroll ? { 'data-pilot-scroll': '' } : {}),
+};
+---
+
+{
+  href ? (
+    <a href={href} class={classes} {...dataAttrs} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={classes} {...dataAttrs} {...rest}>
+      <slot />
+    </button>
+  )
+}

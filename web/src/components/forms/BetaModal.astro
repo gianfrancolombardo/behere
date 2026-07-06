@@ -1,0 +1,164 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  cta: string;
+  microcopy: string;
+  successMessage: string;
+  fields: {
+    email: string;
+    city: string;
+    showType: string;
+    showTypeOptions: string[];
+  };
+}
+
+const { title, body, cta, microcopy, successMessage, fields } = Astro.props;
+---
+
+<div
+  id="beta-modal"
+  class="fixed inset-0 z-[100] hidden items-center justify-center p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="beta-modal-title"
+  aria-hidden="true"
+>
+  <div class="beta-modal-backdrop absolute inset-0 bg-bg/80 backdrop-blur-sm" data-beta-close></div>
+  <div class="panel relative z-10 w-full max-w-md p-6 md:p-8">
+    <button
+      type="button"
+      class="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-text-muted transition-colors hover:bg-purple-glow/20 hover:text-text"
+      data-beta-close
+      aria-label="Cerrar"
+    >
+      ✕
+    </button>
+
+    <div class="beta-modal-form">
+      <h2 id="beta-modal-title" class="font-display text-2xl font-bold">{title}</h2>
+      <p class="mt-3 text-sm leading-relaxed text-text-muted">{body}</p>
+
+      <form class="beta-form mt-6 space-y-4" data-success-template={successMessage}>
+        <div>
+          <label for="beta-email" class="mb-1.5 block text-sm font-medium text-text-muted">
+            {fields.email}
+          </label>
+          <input
+            type="email"
+            id="beta-email"
+            name="email"
+            required
+            autocomplete="email"
+            class="w-full rounded-[10px] border border-border bg-bg px-4 py-3 text-sm text-text focus:border-purple-glow focus:outline-none focus:ring-1 focus:ring-purple-glow"
+          />
+        </div>
+        <div>
+          <label for="beta-city" class="mb-1.5 block text-sm font-medium text-text-muted">
+            {fields.city}
+          </label>
+          <input
+            type="text"
+            id="beta-city"
+            name="city"
+            required
+            autocomplete="address-level2"
+            class="w-full rounded-[10px] border border-border bg-bg px-4 py-3 text-sm text-text focus:border-purple-glow focus:outline-none focus:ring-1 focus:ring-purple-glow"
+          />
+        </div>
+        <div>
+          <label for="beta-show-type" class="mb-1.5 block text-sm font-medium text-text-muted">
+            {fields.showType}
+          </label>
+          <select
+            id="beta-show-type"
+            name="showType"
+            required
+            class="w-full rounded-[10px] border border-border bg-bg px-4 py-3 text-sm text-text focus:border-purple-glow focus:outline-none focus:ring-1 focus:ring-purple-glow"
+          >
+            <option value="">Selecciona...</option>
+            {fields.showTypeOptions.map((opt) => <option value={opt}>{opt}</option>)}
+          </select>
+        </div>
+        <button
+          type="submit"
+          class="flex min-h-11 w-full items-center justify-center rounded-full bg-accent text-sm font-semibold text-bg hover:bg-accent-dim"
+          data-cta="beta-modal-submit"
+        >
+          {cta}
+        </button>
+        <p class="text-center text-xs text-text-muted">{microcopy}</p>
+      </form>
+    </div>
+
+    <div class="beta-modal-success hidden text-center" role="status">
+      <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-accent/20 text-accent text-xl">
+        ✓
+      </div>
+      <p class="beta-success-text text-sm leading-relaxed text-text-muted"></p>
+      <button
+        type="button"
+        class="mt-6 min-h-11 rounded-full border border-border px-6 text-sm font-semibold text-text hover:border-purple-glow"
+        data-beta-close
+      >
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('beta-modal');
+  if (!modal) throw new Error('Beta modal not found');
+
+  const formSection = modal.querySelector('.beta-modal-form') as HTMLElement;
+  const successSection = modal.querySelector('.beta-modal-success') as HTMLElement;
+  const successText = modal.querySelector('.beta-success-text') as HTMLElement;
+  const form = modal.querySelector('.beta-form') as HTMLFormElement;
+
+  function openModal() {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const firstInput = modal.querySelector('input') as HTMLInputElement;
+    firstInput?.focus();
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-beta-trigger]').forEach((el) => {
+    el.addEventListener('click', openModal);
+  });
+
+  modal.querySelectorAll('[data-beta-close]').forEach((el) => {
+    el.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const payload = Object.fromEntries(data.entries());
+    const city = String(payload.city ?? 'tu ciudad');
+    console.info('[BeHere Beta Lead]', payload);
+
+    const template = form.dataset.successTemplate ?? 'Listo.';
+    if (successText) {
+      successText.textContent = template.replace('tu ciudad', city);
+    }
+
+    formSection?.classList.add('hidden');
+    successSection?.classList.remove('hidden');
+  });
+</script>

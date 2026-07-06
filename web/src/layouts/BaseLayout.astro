@@ -1,0 +1,61 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/layout/SiteHeader.astro';
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import type { LandingSEO } from '../content/types';
+
+interface Props {
+  seo: LandingSEO;
+  current: 'b2b' | 'b2c';
+  stickyCta: string;
+  stickyVariant: 'header' | 'footer';
+}
+
+const { seo, current, stickyCta, stickyVariant } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={seo.ogTitle} />
+    <meta property="og:description" content={seo.ogDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seo.ogTitle} />
+    <meta name="twitter:description" content={seo.ogDescription} />
+  </head>
+  <body class="min-h-screen overflow-x-hidden">
+    <SiteHeader {current} {stickyCta} {stickyVariant} />
+    <main class="pt-16">
+      <slot />
+    </main>
+    <SiteFooter />
+    <slot name="scripts" />
+    <script>
+      const revealables = document.querySelectorAll('.reveal');
+      if (revealables.length) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-in');
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
+        );
+        revealables.forEach((el) => observer.observe(el));
+      }
+    </script>
+  </body>
+</html>

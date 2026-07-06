@@ -1,0 +1,52 @@
+---
+import type { LandingContent } from '../../content/types';
+
+interface Props {
+  testimonials: LandingContent['testimonials'];
+}
+
+const { testimonials } = Astro.props;
+---
+
+<section class="section-padding">
+  <div class="container-main">
+    <h2 class="reveal font-display text-3xl font-bold md:text-4xl">{testimonials.title}</h2>
+
+    <div class="mt-14 grid gap-6 md:mt-16 md:grid-cols-2 md:gap-8">
+      {
+        testimonials.items.map((item, index) => (
+          <blockquote
+            class:list={[
+              'reveal panel relative flex h-full flex-col p-7 md:p-8',
+              index === 1 && 'reveal-delay-1',
+            ]}
+          >
+            <span
+              class="pointer-events-none absolute -left-1 -top-5 font-display text-7xl leading-none text-purple-glow/15 md:text-8xl"
+              aria-hidden="true"
+            >
+              &rdquo;
+            </span>
+            {
+              item.placeholder && (
+                <span class="chip-ticket absolute right-5 top-5 !text-[10px]">Próximamente</span>
+              )
+            }
+            <p class="relative flex-1 text-lg leading-relaxed text-text md:text-xl">{item.quote}</p>
+            <footer class="relative mt-5 text-sm text-text-muted">
+              {item.author}
+              <span class="text-purple-muted/50"> - </span>
+              {item.role}
+            </footer>
+          </blockquote>
+        ))
+      }
+    </div>
+
+    {
+      testimonials.footnote && (
+        <p class="mt-10 text-sm text-text-muted md:text-center">{testimonials.footnote}</p>
+      )
+    }
+  </div>
+</section>

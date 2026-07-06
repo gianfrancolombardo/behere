@@ -1,0 +1,211 @@
+@import 'tailwindcss';
+@import '@fontsource/syne/500.css';
+@import '@fontsource/syne/600.css';
+@import '@fontsource/syne/700.css';
+@import '@fontsource/syne/800.css';
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+
+@theme {
+  --color-bg: #050505;
+  --color-surface: #0f0a14;
+  --color-surface-elevated: #1a1024;
+  --color-purple-deep: #3a0066;
+  --color-purple-glow: #7c3aed;
+  --color-purple-muted: #a78bfa;
+  --color-accent: #10ff5e;
+  --color-accent-dim: #0dd952;
+  --color-text: #ffffff;
+  --color-text-muted: #a1a1aa;
+  --color-border: rgba(124, 58, 237, 0.2);
+
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+/*
+  SHAPE SYSTEM (locked, do not mix):
+  - Interactive controls (buttons, nav pills, chips, inputs-focus-ring): full pill radius.
+  - Content surfaces (tickets, panels, timeline nodes): 6px sharp-ish radius, no rounded-2xl soup.
+  - Form inputs: 10px.
+*/
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-bg text-text font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-purple-glow/40 text-text;
+  }
+}
+
+@layer components {
+  .container-main {
+    @apply mx-auto w-full max-w-6xl px-5 md:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-28;
+  }
+
+  /* Signature ambient light: a stage wash, not a centered blob */
+  .stage-glow {
+    position: absolute;
+    inset: -10% -10% auto -10%;
+    height: 60%;
+    background: radial-gradient(
+        60% 90% at 12% 0%,
+        rgba(124, 58, 237, 0.4) 0%,
+        transparent 60%
+      ),
+      radial-gradient(45% 70% at 92% 10%, rgba(16, 255, 94, 0.12) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Generic panel surface (replaces old rounded-2xl card-surface everywhere) */
+  .panel {
+    @apply rounded-[6px] border border-border bg-surface/70 backdrop-blur-sm;
+  }
+
+  /* Ghost numeral used to index list items without falling back to cards */
+  .ghost-numeral {
+    @apply font-display leading-none text-transparent;
+    -webkit-text-stroke: 1px rgba(167, 139, 250, 0.35);
+    font-size: clamp(3.5rem, 9vw, 6rem);
+  }
+
+  /* Small tag chip, ticket-stub feeling: dashed top/bottom, not a rounded pill badge */
+  .chip-ticket {
+    @apply relative inline-flex items-center gap-2 border border-dashed border-purple-glow/40 bg-purple-glow/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-purple-muted;
+    border-radius: 6px;
+  }
+
+  /* Backstage-pass ticket surface with punched side notches. Use only on --color-bg backgrounds. */
+  .ticket {
+    @apply relative border border-border bg-surface;
+    border-radius: 6px;
+  }
+
+  .ticket-notch {
+    @apply relative border-t border-dashed border-border/70;
+  }
+
+  .ticket-notch::before,
+  .ticket-notch::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+  }
+
+  .ticket-notch::before {
+    left: -11px;
+  }
+
+  .ticket-notch::after {
+    right: -11px;
+  }
+
+  /* Vertical gradient rail used by the steps timeline */
+  .timeline-rail {
+    background: linear-gradient(
+      to bottom,
+      rgba(124, 58, 237, 0.7),
+      rgba(124, 58, 237, 0.25) 60%,
+      rgba(16, 255, 94, 0.4)
+    );
+  }
+
+  /* Versus-style comparison table: no per-row hairlines, subtle zebra + accent column */
+  .versus-table {
+    @apply w-full border-collapse text-left text-sm;
+  }
+
+  .versus-table thead th {
+    @apply border-b border-border pb-3 pr-4 font-medium text-text-muted;
+  }
+
+  .versus-table tbody tr:nth-child(odd) {
+    background: rgba(124, 58, 237, 0.04);
+  }
+
+  .versus-table tbody th,
+  .versus-table tbody td {
+    @apply py-3 pr-4 align-top;
+  }
+
+  .versus-table .col-behere {
+    @apply relative pl-4 font-medium text-text;
+    box-shadow: inset 2px 0 0 0 var(--color-accent);
+  }
+
+  /* Scroll-reveal, respects reduced motion via the global override above */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 {
+    transition-delay: 0.08s;
+  }
+
+  .reveal-delay-2 {
+    transition-delay: 0.16s;
+  }
+
+  .reveal-delay-3 {
+    transition-delay: 0.24s;
+  }
+
+  .hairline {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-border), transparent);
+  }
+
+  .scroll-rail {
+    scrollbar-width: none;
+  }
+
+  .scroll-rail::-webkit-scrollbar {
+    display: none;
+  }
+}

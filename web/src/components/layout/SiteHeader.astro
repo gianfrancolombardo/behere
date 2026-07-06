@@ -1,0 +1,128 @@
+---
+interface Props {
+  current: 'b2b' | 'b2c';
+  stickyCta: string;
+  stickyVariant: 'header' | 'footer';
+  showDesktopCta?: boolean;
+}
+
+const { current, stickyCta, stickyVariant, showDesktopCta = true } = Astro.props;
+const isB2B = current === 'b2b';
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 border-b border-border bg-bg/85 backdrop-blur-md"
+>
+  <div class="container-main flex h-16 items-center justify-between gap-4">
+    <a href="/" class="font-display text-xl font-bold tracking-tight text-text">
+      Be<span class="text-purple-muted">Here</span>
+    </a>
+
+    <nav
+      class="flex items-center rounded-full border border-border bg-bg/60 p-1"
+      aria-label="Seleccionar audiencia"
+    >
+      <a
+        href="/"
+        class:list={[
+          'rounded-full px-3 py-1.5 text-xs font-semibold transition-colors md:px-4 md:text-sm',
+          isB2B ? 'bg-purple-glow text-text' : 'text-text-muted hover:text-text',
+        ]}
+        aria-current={isB2B ? 'page' : undefined}
+      >
+        Artistas
+      </a>
+      <a
+        href="/app"
+        class:list={[
+          'rounded-full px-3 py-1.5 text-xs font-semibold transition-colors md:px-4 md:text-sm',
+          !isB2B ? 'bg-purple-glow text-text' : 'text-text-muted hover:text-text',
+        ]}
+        aria-current={!isB2B ? 'page' : undefined}
+      >
+        Fans
+      </a>
+    </nav>
+
+    {
+      showDesktopCta && (
+        <button
+          type="button"
+          class:list={[
+            'hidden min-h-11 items-center rounded-full bg-accent px-4 text-sm font-semibold text-bg transition-colors hover:bg-accent-dim md:inline-flex',
+            isB2B ? 'data-pilot-scroll' : 'data-beta-trigger',
+          ]}
+          data-cta="header"
+        >
+          {stickyCta}
+        </button>
+      )
+    }
+  </div>
+</header>
+
+{
+  stickyVariant === 'header' && (
+    <div
+      id="sticky-cta-bar"
+      class="fixed inset-x-0 top-16 z-40 translate-y-[-120%] border-b border-border bg-surface/95 px-4 py-2 backdrop-blur-md transition-transform duration-300 md:hidden"
+    >
+      <button
+        type="button"
+        class="data-pilot-scroll flex min-h-11 w-full items-center justify-center rounded-full bg-accent text-sm font-semibold text-bg"
+        data-cta="sticky-header"
+      >
+        {stickyCta}
+      </button>
+    </div>
+  )
+}
+
+{
+  stickyVariant === 'footer' && (
+    <div
+      id="sticky-cta-bar"
+      class="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t border-border bg-surface/95 p-4 backdrop-blur-md transition-transform duration-300 md:hidden"
+    >
+      <button
+        type="button"
+        class="data-beta-trigger flex min-h-11 w-full items-center justify-center rounded-full bg-accent text-sm font-semibold text-bg"
+        data-cta="sticky-footer"
+      >
+        {stickyCta}
+      </button>
+    </div>
+  )
+}
+
+<script>
+  const header = document.getElementById('site-header');
+  const stickyBar = document.getElementById('sticky-cta-bar');
+
+  if (header && stickyBar) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          stickyBar.classList.add(stickyBar.classList.contains('bottom-0') ? 'translate-y-full' : 'translate-y-[-120%]');
+        } else {
+          stickyBar.classList.remove('translate-y-full', 'translate-y-[-120%]');
+          stickyBar.classList.add('translate-y-0');
+        }
+      },
+      { threshold: 0, rootMargin: '0px' },
+    );
+
+    const sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.className = 'h-px';
+    header.after(sentinel);
+    observer.observe(sentinel);
+  }
+
+  document.querySelectorAll('[data-pilot-scroll]').forEach((el) => {
+    el.addEventListener('click', () => {
+      document.getElementById('pilot-form')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>

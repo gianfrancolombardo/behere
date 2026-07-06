@@ -1,0 +1,69 @@
+---
+import { Image as ImageIcon } from '@lucide/astro';
+
+interface Props {
+  aspect?: 'video' | 'square' | 'portrait';
+  alt: string;
+  src?: string;
+  priority?: boolean;
+  tilt?: 'left' | 'right' | 'none';
+  class?: string;
+}
+
+const {
+  aspect = 'video',
+  alt,
+  src,
+  priority = false,
+  tilt = 'none',
+  class: className = '',
+} = Astro.props;
+
+const aspectClasses = {
+  video: 'aspect-video',
+  square: 'aspect-square',
+  portrait: 'aspect-[4/5]',
+};
+
+const tiltClasses = {
+  left: '-rotate-2',
+  right: 'rotate-2',
+  none: '',
+};
+---
+
+<!-- TODO: replace with optimized asset -->
+<div class:list={['relative', tiltClasses[tilt], className]}>
+  <div
+    class:list={[
+      'relative overflow-hidden border border-border bg-surface-elevated',
+      aspectClasses[aspect],
+    ]}
+    style="border-radius: 6px;"
+  >
+    {
+      src ? (
+        <img
+          src={src}
+          alt={alt}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+          class="h-full w-full object-cover"
+        />
+      ) : (
+        <div class="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-purple-deep/50 via-surface to-bg p-6">
+          <div class="flex h-14 w-14 items-center justify-center border border-purple-glow/30 bg-purple-glow/10" style="border-radius: 6px;">
+            <ImageIcon size={26} class="text-purple-muted" aria-hidden="true" />
+          </div>
+          <span class="max-w-[16rem] text-center text-xs text-text-muted">{alt}</span>
+        </div>
+      )
+    }
+  </div>
+  <div
+    class="pointer-events-none absolute -bottom-3 -right-3 -z-10 h-full w-full border border-purple-glow/25"
+    style="border-radius: 6px;"
+    aria-hidden="true"
+  >
+  </div>
+</div>

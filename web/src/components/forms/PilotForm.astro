@@ -1,0 +1,127 @@
+---
+interface Props {
+  actTypeOptions: string[];
+  microcopy: string;
+  successMessage: string;
+  compact?: boolean;
+  bare?: boolean;
+  id?: string;
+}
+
+const {
+  actTypeOptions,
+  microcopy,
+  successMessage,
+  compact = false,
+  bare = false,
+  id = 'pilot-form',
+} = Astro.props;
+---
+
+<div id={id} class:list={[!bare && 'panel p-6 md:p-8', compact && 'lg:p-6']}>
+  <form class="pilot-form space-y-4" data-success-message={successMessage}>
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div class="sm:col-span-1">
+        <label for={`${id}-name`} class="mb-1.5 block text-sm font-medium text-text-muted">
+          Nombre
+        </label>
+        <input
+          type="text"
+          id={`${id}-name`}
+          name="name"
+          required
+          autocomplete="name"
+          class="w-full rounded-[10px] border border-border bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 focus:border-purple-glow focus:outline-none focus:ring-1 focus:ring-purple-glow"
+          placeholder="Tu nombre"
+        />
+      </div>
+      <div class="sm:col-span-1">
+        <label for={`${id}-email`} class="mb-1.5 block text-sm font-medium text-text-muted">
+          Email
+        </label>
+        <input
+          type="email"
+          id={`${id}-email`}
+          name="email"
+          required
+          autocomplete="email"
+          class="w-full rounded-[10px] border border-border bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 focus:border-purple-glow focus:outline-none focus:ring-1 focus:ring-purple-glow"
+          placeholder="tu@email.com"
+        />
+      </div>
+      <div class="sm:col-span-1">
+        <label for={`${id}-act`} class="mb-1.5 block text-sm font-medium text-text-muted">
+          Tipo de acto
+        </label>
+        <select
+          id={`${id}-act`}
+          name="actType"
+          required
+          class="w-full rounded-[10px] border border-border bg-bg px-4 py-3 text-sm text-text focus:border-purple-glow focus:outline-none focus:ring-1 focus:ring-purple-glow"
+        >
+          <option value="">Selecciona...</option>
+          {actTypeOptions.map((opt) => <option value={opt}>{opt}</option>)}
+        </select>
+      </div>
+      <div class="sm:col-span-1">
+        <label for={`${id}-city`} class="mb-1.5 block text-sm font-medium text-text-muted">
+          Ciudad
+        </label>
+        <input
+          type="text"
+          id={`${id}-city`}
+          name="city"
+          required
+          autocomplete="address-level2"
+          class="w-full rounded-[10px] border border-border bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 focus:border-purple-glow focus:outline-none focus:ring-1 focus:ring-purple-glow"
+          placeholder="Madrid, Barcelona..."
+        />
+      </div>
+      <div class="sm:col-span-2">
+        <label for={`${id}-show`} class="mb-1.5 block text-sm font-medium text-text-muted">
+          ¿Cuándo es tu próximo show? <span class="text-text-muted/60">(opcional)</span>
+        </label>
+        <input
+          type="text"
+          id={`${id}-show`}
+          name="nextShow"
+          class="w-full rounded-[10px] border border-border bg-bg px-4 py-3 text-sm text-text placeholder:text-text-muted/50 focus:border-purple-glow focus:outline-none focus:ring-1 focus:ring-purple-glow"
+          placeholder="Fecha o descripción breve"
+        />
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="flex min-h-11 w-full items-center justify-center rounded-full bg-accent text-sm font-semibold text-bg transition-colors hover:bg-accent-dim sm:w-auto sm:px-8"
+      data-cta="pilot-form-submit"
+    >
+      Solicitar piloto gratuito
+    </button>
+    <p class="text-center text-xs text-text-muted sm:text-left">{microcopy}</p>
+    <div class="pilot-form-success hidden rounded-[10px] border border-accent/30 bg-accent/10 p-4 text-sm text-accent" role="status"></div>
+  </form>
+</div>
+
+<script>
+  document.querySelectorAll('.pilot-form').forEach((formEl) => {
+    const form = formEl as HTMLFormElement;
+    const successEl = form.querySelector('.pilot-form-success') as HTMLElement;
+    const message = form.dataset.successMessage ?? 'Recibido.';
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const payload = Object.fromEntries(data.entries());
+      console.info('[BeHere Pilot Lead]', payload);
+
+      form.querySelectorAll('input, select, button').forEach((el) => {
+        (el as HTMLInputElement).disabled = true;
+      });
+
+      if (successEl) {
+        successEl.textContent = message;
+        successEl.classList.remove('hidden');
+      }
+    });
+  });
+</script>

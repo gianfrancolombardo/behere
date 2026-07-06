@@ -1,0 +1,30 @@
+---
+import Button from '../ui/Button.astro';
+import type { LandingContent } from '../../content/types';
+
+interface Props {
+  challenge: NonNullable<LandingContent['challenge']>;
+}
+
+const { challenge } = Astro.props;
+const paragraphs = challenge.body.split('\n\n');
+---
+
+<section class="section-padding">
+  <div class="container-main">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <h2 class="font-display text-3xl font-bold md:text-5xl">{challenge.title}</h2>
+      <div class="mt-6 space-y-3 text-lg text-text-muted">
+        {paragraphs.map((p) => <p class="leading-relaxed">{p}</p>)}
+      </div>
+      <div class="ticket-notch mx-auto mt-8 max-w-md">
+        <p class="px-4 pt-6 text-sm text-text">{challenge.placeholder}</p>
+      </div>
+      <div class="mt-8">
+        <Button variant="primary" betaTrigger dataCta="challenge-cta">
+          Acepto el reto
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

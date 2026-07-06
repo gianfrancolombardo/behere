@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import ProblemSection from '../components/sections/ProblemSection.astro';
+import SolutionSection from '../components/sections/SolutionSection.astro';
+import StepsSection from '../components/sections/StepsSection.astro';
+import UrgencySection from '../components/sections/UrgencySection.astro';
+import TestimonialsSection from '../components/sections/TestimonialsSection.astro';
+import PricingSection from '../components/sections/PricingSection.astro';
+import FaqSection from '../components/sections/FaqSection.astro';
+import FinalCta from '../components/sections/FinalCta.astro';
+import { b2bContent } from '../content/b2b';
+
+const content = b2bContent;
+---
+
+<BaseLayout
+  seo={content.seo}
+  current="b2b"
+  stickyCta={content.stickyCta}
+  stickyVariant="header"
+>
+  <Hero hero={content.hero} variant="b2b" pilotForm={content.pilotForm} />
+  <ProblemSection
+    problem={content.problem}
+    imageAlt="Artista en escenario con público distraído por pantallas"
+  />
+  <SolutionSection solution={content.solution} />
+  <StepsSection steps={content.steps} variant="b2b" />
+  {content.urgency && <UrgencySection urgency={content.urgency} />}
+  <TestimonialsSection testimonials={content.testimonials} />
+  {content.pricing && <PricingSection pricing={content.pricing} />}
+  <FaqSection faq={content.faq} />
+  <FinalCta
+    finalCta={content.finalCta}
+    variant="b2b"
+    pilotForm={content.pilotForm}
+  />
+</BaseLayout>

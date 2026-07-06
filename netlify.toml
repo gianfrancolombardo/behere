@@ -1,0 +1,22 @@
+# Behere — Netlify deployment
+# Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
+#
+# Deploy from the Netlify UI:
+#   1. Add new site → Import from Git → select this repository
+#   2. Netlify reads this file automatically (no manual build settings needed)
+#   3. Deploy
+#
+# Deploy from the CLI:
+#   npm install -g netlify-cli
+#   netlify login
+#   netlify init          # link site on first run
+#   netlify deploy        # draft URL
+#   netlify deploy --prod # production
+
+[build]
+  base = "web"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

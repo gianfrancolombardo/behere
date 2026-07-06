@@ -1,0 +1,25 @@
+---
+import type { LandingContent } from '../../content/types';
+
+interface Props {
+  urgency: NonNullable<LandingContent['urgency']>;
+}
+
+const { urgency } = Astro.props;
+const paragraphs = urgency.body.split('\n\n');
+---
+
+<section class="section-padding relative overflow-hidden">
+  <div
+    class="pointer-events-none absolute inset-0 bg-gradient-to-b from-purple-deep/25 via-transparent to-transparent"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="container-main relative reveal text-center">
+    <h2 class="mx-auto max-w-2xl font-display text-3xl font-bold md:text-4xl">{urgency.title}</h2>
+    <div class="mx-auto mt-6 max-w-xl space-y-4 text-text-muted">
+      {paragraphs.map((p) => <p class="leading-relaxed">{p}</p>)}
+    </div>
+    <p class="chip-ticket mt-8 inline-flex">{urgency.scarcity}</p>
+  </div>
+</section>

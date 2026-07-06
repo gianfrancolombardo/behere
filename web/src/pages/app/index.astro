@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/sections/Hero.astro';
+import ProblemSection from '../../components/sections/ProblemSection.astro';
+import SolutionSection from '../../components/sections/SolutionSection.astro';
+import StepsSection from '../../components/sections/StepsSection.astro';
+import ChallengeSection from '../../components/sections/ChallengeSection.astro';
+import RewardSection from '../../components/sections/RewardSection.astro';
+import ProfilesSection from '../../components/sections/ProfilesSection.astro';
+import TestimonialsSection from '../../components/sections/TestimonialsSection.astro';
+import FaqSection from '../../components/sections/FaqSection.astro';
+import FinalCta from '../../components/sections/FinalCta.astro';
+import BetaModal from '../../components/forms/BetaModal.astro';
+import { b2cContent } from '../../content/b2c';
+
+const content = b2cContent;
+---
+
+<BaseLayout
+  seo={content.seo}
+  current="b2c"
+  stickyCta={content.stickyCta}
+  stickyVariant="footer"
+>
+  <Hero hero={content.hero} variant="b2c" />
+  <ProblemSection
+    problem={content.problem}
+    imageAlt="Fan en concierto mirando el móvil en lugar del escenario"
+  />
+  <SolutionSection solution={content.solution} />
+  <StepsSection steps={content.steps} variant="b2c" />
+  {content.challenge && <ChallengeSection challenge={content.challenge} />}
+  {content.reward && <RewardSection reward={content.reward} />}
+  {content.profiles && <ProfilesSection profiles={content.profiles} />}
+  <TestimonialsSection testimonials={content.testimonials} />
+  <FaqSection faq={content.faq} />
+  <FinalCta
+    finalCta={content.finalCta}
+    variant="b2c"
+    tagline={content.hero.tagline}
+  />
+
+  <div class="h-20 md:hidden" aria-hidden="true"></div>
+
+  {
+    content.betaModal && (
+      <BetaModal
+        title={content.betaModal.title}
+        body={content.betaModal.body}
+        cta={content.betaModal.cta}
+        microcopy={content.betaModal.microcopy}
+        successMessage={content.betaModal.successMessage}
+        fields={content.betaModal.fields}
+      />
+    )
+  }
+</BaseLayout>

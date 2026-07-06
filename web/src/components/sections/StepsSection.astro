@@ -1,0 +1,62 @@
+---
+import Button from '../ui/Button.astro';
+import type { LandingContent } from '../../content/types';
+
+interface Props {
+  steps: LandingContent['steps'];
+  variant: 'b2b' | 'b2c';
+}
+
+const { steps, variant } = Astro.props;
+const isB2B = variant === 'b2b';
+---
+
+<section id="how-it-works" class="section-padding">
+  <div class="container-main">
+    <h2 class="reveal max-w-lg font-display text-3xl font-bold md:text-4xl">{steps.title}</h2>
+
+    <ol class="relative mt-14 md:mt-16">
+      <div class="timeline-rail absolute left-5 top-3 bottom-3 w-px md:left-6" aria-hidden="true"></div>
+      {
+        steps.steps.map((step, index) => (
+          <li class="reveal relative flex gap-6 pb-10 pl-16 last:pb-0 md:gap-8 md:pl-20">
+            <span
+              class="absolute left-0 flex h-10 w-10 shrink-0 items-center justify-center border border-purple-glow bg-bg font-display text-sm font-bold text-purple-muted md:h-12 md:w-12"
+              style="border-radius: 6px;"
+              aria-hidden="true"
+            >
+              {index + 1}
+            </span>
+            <div class="min-w-0 pt-1 md:pt-2">
+              <h3 class="font-display text-xl font-semibold">{step.title}</h3>
+              <p class="mt-2 max-w-xl text-sm leading-relaxed text-text-muted md:text-base">
+                {step.description}
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    {
+      steps.microcopy && (
+        <p class="mt-2 text-sm text-text-muted">{steps.microcopy}</p>
+      )
+    }
+
+    {
+      steps.intermediateCta && (
+        <div class="mt-8">
+          <Button
+            variant="primary"
+            dataCta="steps-intermediate"
+            pilotScroll={isB2B}
+            betaTrigger={!isB2B}
+          >
+            {steps.intermediateCta}
+          </Button>
+        </div>
+      )
+    }
+  </div>
+</section>
