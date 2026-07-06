@@ -7,9 +7,6 @@ interface Props {
   successMessage: string;
   fields: {
     email: string;
-    city: string;
-    showType: string;
-    showTypeOptions: string[];
   };
 }
 
@@ -52,33 +49,6 @@ const { title, body, cta, microcopy, successMessage, fields } = Astro.props;
             autocomplete="email"
             class="w-full rounded-[10px] border border-border bg-bg px-4 py-3 text-sm text-text focus:border-purple-glow focus:outline-none focus:ring-1 focus:ring-purple-glow"
           />
-        </div>
-        <div>
-          <label for="beta-city" class="mb-1.5 block text-sm font-medium text-text-muted">
-            {fields.city}
-          </label>
-          <input
-            type="text"
-            id="beta-city"
-            name="city"
-            required
-            autocomplete="address-level2"
-            class="w-full rounded-[10px] border border-border bg-bg px-4 py-3 text-sm text-text focus:border-purple-glow focus:outline-none focus:ring-1 focus:ring-purple-glow"
-          />
-        </div>
-        <div>
-          <label for="beta-show-type" class="mb-1.5 block text-sm font-medium text-text-muted">
-            {fields.showType}
-          </label>
-          <select
-            id="beta-show-type"
-            name="showType"
-            required
-            class="w-full rounded-[10px] border border-border bg-bg px-4 py-3 text-sm text-text focus:border-purple-glow focus:outline-none focus:ring-1 focus:ring-purple-glow"
-          >
-            <option value="">Selecciona...</option>
-            {fields.showTypeOptions.map((opt) => <option value={opt}>{opt}</option>)}
-          </select>
         </div>
         <button
           type="submit"
@@ -150,12 +120,11 @@ const { title, body, cta, microcopy, successMessage, fields } = Astro.props;
     e.preventDefault();
     const data = new FormData(form);
     const payload = Object.fromEntries(data.entries());
-    const city = String(payload.city ?? 'tu ciudad');
     console.info('[BeHere Beta Lead]', payload);
 
     const template = form.dataset.successTemplate ?? 'Listo.';
     if (successText) {
-      successText.textContent = template.replace('tu ciudad', city);
+      successText.textContent = template;
     }
 
     formSection?.classList.add('hidden');

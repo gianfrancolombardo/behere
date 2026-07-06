@@ -141,9 +141,6 @@ export interface LandingContent {
     successMessage: string;
     fields: {
       email: string;
-      city: string;
-      showType: string;
-      showTypeOptions: string[];
     };
   };
   pilotForm?: {

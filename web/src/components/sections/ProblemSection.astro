@@ -6,9 +6,10 @@ import type { LandingContent } from '../../content/types';
 interface Props {
   problem: LandingContent['problem'];
   imageAlt?: string;
+  imageSrc?: string;
 }
 
-const { problem, imageAlt = 'Experiencia en vivo afectada por pantallas' } = Astro.props;
+const { problem, imageAlt = 'Experiencia en vivo afectada por pantallas', imageSrc } = Astro.props;
 const paragraphs = problem.body.split('\n\n');
 ---
 
@@ -30,7 +31,7 @@ const paragraphs = problem.body.split('\n\n');
           )
         }
       </div>
-      <PlaceholderImage aspect="portrait" alt={imageAlt} tilt="left" class="reveal reveal-delay-1 mx-auto w-full max-w-sm lg:mx-0 lg:ml-auto" />
+      <PlaceholderImage aspect="portrait" alt={imageAlt} src={imageSrc} tilt="left" class="reveal reveal-delay-1 mx-auto w-full max-w-sm lg:mx-0 lg:ml-auto" />
     </div>
 
     <div class="mt-16 md:mt-20">

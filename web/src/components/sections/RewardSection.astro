@@ -14,7 +14,60 @@ const [yoursHeader, behereHeader] = reward.comparison.headers;
 <section class="section-padding bg-surface/20">
   <div class="container-main">
     <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
-      <PlaceholderImage aspect="video" alt="Contenido exclusivo del artista" tilt="left" class="reveal order-2 lg:order-1" />
+      <div class="reveal order-2 lg:order-1 relative mx-auto w-full max-w-sm lg:mx-0 -rotate-2">
+        <div class="relative overflow-hidden border border-border/80 bg-surface-elevated shadow-[0_20px_50px_rgba(124,58,237,0.2)] p-3" style="border-radius: 28px; aspect-ratio: 9/16;">
+          <div class="absolute top-4 left-1/2 -translate-x-1/2 h-4 w-24 bg-bg rounded-full z-20 flex items-center justify-center">
+            <div class="w-12 h-1 bg-border/40 rounded-full"></div>
+          </div>
+          
+          <div class="relative h-full w-full rounded-[20px] bg-bg overflow-hidden flex flex-col justify-between p-5 border border-border/50">
+            <div class="absolute -top-20 -right-20 w-40 h-40 bg-purple-glow/20 rounded-full blur-[40px] pointer-events-none"></div>
+            <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-accent/10 rounded-full blur-[40px] pointer-events-none"></div>
+            
+            <div class="flex justify-between items-center text-[10px] text-text-muted/60 mt-1">
+              <span>23:45</span>
+              <div class="flex gap-1.5 items-center">
+                <span>Modo Show ON</span>
+                <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+              </div>
+            </div>
+            
+            <div class="text-center mt-6">
+              <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-purple-glow/10 border border-purple-glow/30 text-purple-muted mb-3 shadow-[0_0_15px_rgba(124,58,237,0.2)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-unlock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+              </div>
+              <p class="text-[10px] font-bold tracking-[0.15em] text-accent uppercase">Pacto Cumplido</p>
+              <h3 class="text-xl font-bold mt-1 font-display">Recompensa Desbloqueada</h3>
+            </div>
+            
+            <div class="relative border border-border/60 bg-surface/80 rounded-[8px] overflow-hidden p-2 my-4">
+              <div class="relative aspect-video w-full rounded-[6px] bg-surface-elevated overflow-hidden flex items-center justify-center">
+                <div class="absolute inset-0 bg-gradient-to-t from-bg via-purple-deep/40 to-transparent"></div>
+                <div class="absolute top-0 left-1/4 w-12 h-full bg-purple-glow/20 -rotate-12 blur-[10px]"></div>
+                <div class="absolute top-0 right-1/4 w-12 h-full bg-purple-glow/20 rotate-12 blur-[10px]"></div>
+                <div class="absolute bottom-0 w-24 h-12 bg-bg/90 rounded-t-full filter blur-[1px]"></div>
+                
+                <div class="relative z-10 w-8 h-8 rounded-full bg-accent text-bg flex items-center justify-center shadow-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                </div>
+              </div>
+              <div class="mt-2.5 px-1 flex justify-between items-center">
+                <div>
+                  <h4 class="text-xs font-semibold">Show Completo (Multicam)</h4>
+                  <p class="text-[10px] text-text-muted">Audio directo de mesa - 1h 45m</p>
+                </div>
+                <span class="text-[10px] bg-purple-glow/20 border border-purple-glow/30 text-purple-muted px-1.5 py-0.5 rounded">4K</span>
+              </div>
+            </div>
+            
+            <button class="w-full bg-accent hover:bg-accent-dim text-bg font-bold py-2.5 rounded-[10px] text-xs flex items-center justify-center gap-2 transition-all shadow-[0_4px_20px_rgba(16,255,94,0.25)]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+              Descargar a mi dispositivo
+            </button>
+          </div>
+        </div>
+        <div class="absolute -inset-4 -z-10 rounded-[32px] bg-purple-glow/15 blur-2xl pointer-events-none" aria-hidden="true"></div>
+      </div>
       <div class="reveal reveal-delay-1 order-1 lg:order-2">
         <h2 class="font-display text-3xl font-bold md:text-4xl">{reward.title}</h2>
         <ul class="mt-6 space-y-3">

@@ -13,7 +13,7 @@ export const b2cContent: LandingContent = {
     headline: 'Siente el ruido. Tu premio te espera al salir.',
     subheadline:
       'Activa el Modo Show, guarda el móvil y vive el directo sin filtros. Si aguantas todo el set, desbloqueas el contenido exclusivo que el artista subió para quienes estuvieron de verdad.',
-    primaryCta: 'Descargar BeHere',
+    primaryCta: '¿La usarías?',
     secondaryCta: '¿Cómo funciona?',
     secondaryCtaHref: '#how-it-works',
     trustBar: [
@@ -94,13 +94,13 @@ export const b2cContent: LandingContent = {
     ],
     microcopy:
       'Si aguantas, ganas. Si no, siempre puedes comprar el contenido después. Pero confía: una vez que lo pruebas, no quieres volver atrás.',
-    intermediateCta: 'Quiero probarlo',
+    intermediateCta: 'Me interesa',
   },
   challenge: {
     title: '¿Aguantas todo el set sin mirar el móvil?',
     body: 'A que no aguantas todo el concierto sin revisar WhatsApp.\n\nA que no puedes ver a tu artista favorito a los ojos sin pensar en el encuadre.\n\nA que no eres capaz de sentir un show entero sin documentarlo para nadie.\n\nPon a prueba tu atención. Nosotros ponemos el premio.',
     placeholder:
-      'Sé de los primeros en completar el reto. Los early adopters tendrán acceso prioritario a shows exclusivos.',
+      'Ayúdanos a saber si esto tiene sentido. Los primeros en apuntarse tendrán prioridad.',
   },
   reward: {
     title: 'Esto es lo que puede desbloquear al salir',
@@ -108,7 +108,7 @@ export const b2cContent: LandingContent = {
       'Contenido exclusivo que el artista subió para ese show',
       'Puede ser show completo, fragmento, detrás de escena o merch digital',
       'Calidad oficial — no el audio de tu micrófono a 15 metros del escenario',
-      'Descarga directa a tu móvil',
+      'En tu móvil al salir del recinto',
       'Sin marca de agua. Sin publicidad. Contenido del artista.',
     ],
     comparison: {
@@ -165,7 +165,8 @@ export const b2cContent: LandingContent = {
         placeholder: true,
       },
     ],
-    footnote: 'Estamos en beta cerrada. Sé de los primeros en probarlo en tu ciudad.',
+    footnote:
+      'Estamos validando la idea. Déjanos tu email si quieres ser de los primeros.',
   },
   faq: {
     items: [
@@ -209,21 +210,18 @@ export const b2cContent: LandingContent = {
   finalCta: {
     title: 'Tu pantalla de seis pulgadas no es más grande que este escenario',
     subtitle: 'El próximo show puede ser diferente. Modo Show. Bolsillo. Presencia.',
-    cta: 'Descargar BeHere',
+    cta: 'Quiero que me avisen',
   },
   betaModal: {
-    title: 'Estamos en beta cerrada. ¿Quieres entrar?',
-    body: 'BeHere llega a tu ciudad muy pronto. Déjanos tu email y serás de los primeros en recibir acceso cuando abramos tu zona.',
+    title: '¿Usarías BeHere en tu próximo show?',
+    body: 'Estamos construyendo la app que premia estar presente. Déjanos tu email y te avisamos cuando podamos probarla cerca de ti.',
     cta: 'Avísame cuando esté listo',
-    microcopy: 'Sin spam. Solo un email cuando tengamos un show cerca de ti.',
+    microcopy: 'Sin spam. Solo un email cuando tengamos novedades.',
     successMessage:
-      'Listo. Estás en la lista. Cuando haya un show BeHere en tu ciudad, serás de los primeros en saberlo. Ahora sí: guarda el móvil y vive el directo.',
+      'Listo. Te avisaremos cuando BeHere esté listo para probar. Gracias por el interés.',
     fields: {
       email: 'Email',
-      city: 'Ciudad',
-      showType: '¿Qué tipo de shows sueles ver?',
-      showTypeOptions: ['Conciertos', 'Stand-up', 'Teatro', 'Festivales', 'Otro'],
     },
   },
-  stickyCta: 'Descargar',
+  stickyCta: 'Avísame',
 };
