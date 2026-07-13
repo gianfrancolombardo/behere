@@ -3,7 +3,7 @@
 > **Versión:** 2.0  
 > **Fecha:** 13 de julio de 2026  
 > **Estado inicial:** dos landings construidas; aún sin captura persistente de leads ni analítica; sin piloto presencial ni cliente de pago confirmados  
-> **Responsables principales:** Gian (técnica y medición) y Denis (operaciones y comercial)  
+> **Responsables principales:** Gian (técnica y medición) y Deni (operaciones y comercial)  
 > **Modelo operativo:** empresa AI-native con decisiones humanas y automatización evaluada  
 > **Objetivo:** conseguir el primer cliente de pago con evidencia suficiente de que BeHere resuelve un problema real, cambia el comportamiento del público y puede generar valor económico.
 
@@ -97,7 +97,7 @@ Un solo pago no demuestra escalabilidad, pero sí cambia la naturaleza del proye
 - Investigación de mercado y competencia.
 - Gian, con capacidad técnica.
 - Gian es desarrollador senior y puede acelerar instrumentación y MVP con asistencia de IA.
-- Denis, con capacidad operativa y comercial.
+- Deni, con capacidad operativa y comercial.
 - Dos colaboradores potenciales para trabajo presencial en Uruguay.
 - Una posible colaboradora en España.
 - Presupuesto flexible entre 0 y 100 €.
@@ -133,7 +133,7 @@ BeHere será AI-native en su forma de operar, aunque la primera versión del pro
 
 - Cada interacción relevante produzca un artefacto digital reutilizable.
 - La IA participe en tareas repetibles y delimitadas.
-- Gian y Denis sigan siendo responsables del resultado.
+- Gian y Deni sigan siendo responsables del resultado.
 - Toda salida importante tenga fuente, revisión y trazabilidad.
 - Los errores y correcciones mejoren prompts, criterios y playbooks.
 - Los datos permanezcan en formatos portables; no encerrados en una herramienta.
@@ -157,26 +157,26 @@ ChatGPT puede leer copias de este contexto dentro de un **Project**. Según la d
 
 **1. Investigación de prospectos**
 
-- Denis aporta nombre y enlaces públicos.
+- Deni aporta nombre y enlaces públicos.
 - ChatGPT propone:
   - Resumen factual con fuentes.
   - Hipótesis de dolor, marcada expresamente como hipótesis.
   - Ángulo de contacto.
   - Tres líneas personalizadas.
-- Denis verifica que cada afirmación aparece en la fuente y decide si contactar.
+- Deni verifica que cada afirmación aparece en la fuente y decide si contactar.
 
 **2. Mensaje personalizado**
 
 - La IA redacta una primera versión usando una plantilla aprobada.
 - Debe evitar elogios genéricos, datos inventados y referencias personales sensibles.
-- Denis edita y envía manualmente.
+- Deni edita y envía manualmente.
 - El CRM guarda versión sugerida, versión enviada y resultado.
 
 **3. Preparación de entrevista**
 
 - La IA resume la información pública y propone preguntas de seguimiento.
 - El guion base no cambia por prospecto.
-- Denis decide qué preguntas adicionales usar.
+- Deni decide qué preguntas adicionales usar.
 
 **4. Procesamiento de reunión**
 
@@ -194,12 +194,12 @@ Con consentimiento para grabar o a partir de notas anonimizadas, ChatGPT produce
 - Próxima acción.
 - Nivel de confianza y datos faltantes.
 
-Denis revisa la ficha antes de incorporarla al CRM. Una síntesis sin evidencia textual no se acepta como hecho.
+Deni revisa la ficha antes de incorporarla al CRM. Una síntesis sin evidencia textual no se acepta como hecho.
 
 **5. Seguimiento**
 
 - ChatGPT prepara un email o mensaje basado únicamente en lo conversado.
-- Denis confirma promesas, fechas, precio y tono antes de enviarlo.
+- Deni confirma promesas, fechas, precio y tono antes de enviarlo.
 - El seguimiento sale en menos de 24 horas.
 
 **6. Síntesis semanal**
@@ -207,7 +207,7 @@ Denis revisa la ficha antes de incorporarla al CRM. Una síntesis sin evidencia 
 - La IA agrupa patrones de entrevistas y objeciones.
 - Compara resultados con los gates.
 - Señala contradicciones y casos atípicos.
-- Gian y Denis toman la decisión; la IA no declara validada una hipótesis.
+- Gian y Deni toman la decisión; la IA no declara validada una hipótesis.
 
 ### Project primero; GPT personalizado después
 
@@ -224,7 +224,7 @@ Un GPT personalizado reduce repetición de contexto, pero crear uno antes de est
 ### Responsabilidades en el sistema AI-native
 
 - **Gian diseña y mantiene:** Project, instrucciones, plantillas, prompts, exportaciones, controles y evaluación.
-- **Denis opera y corrige:** investigación, mensajes, entrevistas, fichas y seguimientos.
+- **Deni opera y corrige:** investigación, mensajes, entrevistas, fichas y seguimientos.
 - **La IA asiste:** borradores, extracción, clasificación, comparación y síntesis.
 - **La IA no ejecuta:** envíos, cambios de CRM, promesas, descartes ni decisiones sin aprobación humana.
 
@@ -232,7 +232,7 @@ Un GPT personalizado reduce repetición de contexto, pero crear uno antes de est
 
 Medir desde el inicio:
 
-- Minutos de Denis por prospecto.
+- Minutos de Deni por prospecto.
 - Porcentaje de borradores enviados con cambios menores.
 - Afirmaciones sin fuente detectadas.
 - Campos extraídos correctamente de cada reunión.
@@ -367,7 +367,7 @@ Antes de cobrar, el equipo debe usar un medio de pago e identificación fiscal a
 - Prototipos técnicos solo cuando un gate los justifique.
 - Informe cuantitativo del piloto.
 - Evaluación de viabilidad de iOS, Android, offline y fraude.
-- Incorporar a las landings el aprendizaje comercial que Denis aporte.
+- Incorporar a las landings el aprendizaje comercial que Deni aporte.
 
 **No debe dedicar tiempo todavía a:**
 
@@ -381,7 +381,7 @@ Antes de cobrar, el equipo debe usar un medio de pago e identificación fiscal a
 
 **Dedicación orientativa:** 10–16 horas en Fase 0; 3–5 días para el MVP web después de un piloto comprometido; luego 2–4 horas semanales de soporte y análisis.
 
-### Denis — Captación, validación, coordinación remota y cierre
+### Deni — Captación, validación, coordinación remota y cierre
 
 **Es dueño de:**
 
@@ -399,7 +399,7 @@ Antes de cobrar, el equipo debe usar un medio de pago e identificación fiscal a
 - Revisión humana de mensajes, fichas y seguimientos preparados con IA.
 - Entrega a Gian de evidencia comercial para cambios de copy o producto.
 
-Denis no es responsable de editar landings, instrumentar formularios, configurar automatizaciones ni producir informes cuantitativos.
+Deni no es responsable de editar landings, instrumentar formularios, configurar automatizaciones ni producir informes cuantitativos.
 
 **Dedicación orientativa:** 1–2 horas diarias durante las primeras dos semanas; 4–6 horas adicionales de coordinación y cierre en la semana del piloto.
 
@@ -411,7 +411,7 @@ Denis no es responsable de editar landings, instrumentar formularios, configurar
 - Colocar o verificar el material preparado.
 - Confirmar por mensaje que el QR abre.
 - Ayudar durante los primeros minutos si alguien no entiende el flujo.
-- Informar una incidencia que Denis o Gian resuelvan remotamente.
+- Informar una incidencia que Deni o Gian resuelvan remotamente.
 
 ### Persona Uruguay B — Observación acotada
 
@@ -431,7 +431,7 @@ No prospecta, no coordina fechas, no limpia datos, no redacta informes, no entre
 - Sin tareas posteriores obligatorias.
 - Una persona puede cubrir el piloto si el MVP funciona y la sala colabora.
 - La segunda persona mejora la observación, pero no debe ser requisito permanente.
-- Denis agradece, confirma disponibilidad para cada evento y acepta un “no” sin presión.
+- Deni agradece, confirma disponibilidad para cada evento y acepta un “no” sin presión.
 
 ### Posible persona en España — Replicación, no dependencia
 
@@ -441,14 +441,14 @@ Si confirma:
 - Ejecutar únicamente la activación presencial de un piloto ya coordinado.
 - Usar el mismo runbook y formulario de observación.
 
-La creación de listas, entrevistas, seguimiento, análisis y comparación entre mercados corresponden a Denis y Gian.
+La creación de listas, entrevistas, seguimiento, análisis y comparación entre mercados corresponden a Deni y Gian.
 
 ### Decisiones
 
-- **Decisión comercial y de operación:** Denis.
+- **Decisión comercial y de operación:** Deni.
 - **Decisión de producto digital, copy, IA, privacidad y calidad de datos:** Gian.
-- **Cambio de segmento, precio o modelo:** Gian y Denis conjuntamente.
-- **Resultado del piloto:** Denis es responsable; las personas locales ejecutan únicamente su parte presencial.
+- **Cambio de segmento, precio o modelo:** Gian y Deni conjuntamente.
+- **Resultado del piloto:** Deni es responsable; las personas locales ejecutan únicamente su parte presencial.
 
 ---
 
@@ -465,7 +465,7 @@ La creación de listas, entrevistas, seguimiento, análisis y comparación entre
 
 ### Seguimiento asíncrono
 
-Denis actualiza diariamente:
+Deni actualiza diariamente:
 
 - Nuevos prospectos.
 - Contactos enviados.
@@ -507,7 +507,7 @@ No se cambia de mensaje, segmento o precio después de una o dos respuestas aisl
 ## Fase 0 — Preparar medición y verdad comercial
 
 **Duración:** 2–3 días calendario.  
-**Esfuerzo:** Gian 10–16 h; Denis 2–4 h de captación inicial.  
+**Esfuerzo:** Gian 10–16 h; Deni 2–4 h de captación inicial.  
 **Presupuesto:** 0 €.
 
 ### Tareas de Gian
@@ -545,7 +545,7 @@ No se cambia de mensaje, segmento o precio después de una o dos respuestas aisl
 - Preparar prompts versionados para investigación, mensaje, ficha de entrevista, seguimiento y síntesis.
 - Probar el flujo con tres prospectos públicos y corregir afirmaciones sin fuente.
 
-### Tareas de Denis
+### Tareas de Deni
 
 - Definir el perfil operativo del primer prospecto con base en el plan.
 - Crear la primera lista de 20 prospectos usando investigación pública asistida por ChatGPT.
@@ -573,7 +573,7 @@ Si esto falla, no se envía tráfico ni se imprimen QR.
 ## Fase 1 — Descubrimiento B2B y acceso al primer show
 
 **Duración:** 5–10 días calendario.  
-**Esfuerzo:** Denis 12–20 h; Gian 2–4 h de soporte y evaluación; voluntarios 0 h obligatorias.  
+**Esfuerzo:** Deni 12–20 h; Gian 2–4 h de soporte y evaluación; voluntarios 0 h obligatorias.  
 **Presupuesto:** 0 €.
 
 ### Lista de prospectos
@@ -601,8 +601,8 @@ Priorizar:
 
 ### Uso de IA durante captación
 
-- ChatGPT investiga y redacta; Denis verifica y envía.
-- Personalización máxima objetivo: 5 minutos de Denis por prospecto.
+- ChatGPT investiga y redacta; Deni verifica y envía.
+- Personalización máxima objetivo: 5 minutos de Deni por prospecto.
 - Los primeros diez contactos forman la línea base.
 - Comparar los siguientes veinte en tiempo, respuesta, reuniones y errores.
 - Si la personalización automática baja la calidad o suena genérica, volver a la plantilla manual y corregir el prompt.
@@ -629,7 +629,7 @@ No presentar BeHere durante los primeros diez minutos.
 12. ¿Quién posee los derechos y quién tendría que aprobarla?
 13. ¿Tienes un show en los próximos 30 días?
 
-Registrar frases textuales, frecuencia, gravedad, solución actual, capacidad de recompensa y compromiso; no solo un resumen. ChatGPT puede estructurar la ficha, pero Denis compara cada campo con las notas o transcripción.
+Registrar frases textuales, frecuencia, gravedad, solución actual, capacidad de recompensa y compromiso; no solo un resumen. ChatGPT puede estructurar la ficha, pero Deni compara cada campo con las notas o transcripción.
 
 ### Gate 1 — Problema
 
@@ -646,7 +646,7 @@ No construir software para compensar una señal de mercado débil.
 ## Fase 2 — Cerrar y diseñar el piloto
 
 **Duración:** 3–7 días, condicionada por la fecha del show.  
-**Esfuerzo:** Denis 5–8 h; Gian 3–5 días para el primer MVP web; cada voluntario 20 minutos de briefing más presencia en el evento.  
+**Esfuerzo:** Deni 5–8 h; Gian 3–5 días para el primer MVP web; cada voluntario 20 minutos de briefing más presencia en el evento.  
 **Presupuesto:** 0–20 €.
 
 ### Compromisos necesarios del socio piloto
@@ -673,7 +673,7 @@ Construir solo:
 - Entrega o reclamación de recompensa.
 - Encuesta breve.
 - Eventos analíticos.
-- Vista remota simple para Gian y Denis.
+- Vista remota simple para Gian y Deni.
 - Exportación CSV.
 - Fallback en papel de una página.
 
@@ -795,7 +795,7 @@ Una conversación positiva sin fecha no es un piloto comprometido.
 - Probar todos los QR en Android e iPhone.
 - Verificar inicio, cierre, recompensa, encuesta y exportación.
 - Confirmar que la recompensa abre correctamente.
-- Denis envía el runbook de una página y realiza un briefing de 20 minutos.
+- Deni envía el runbook de una página y realiza un briefing de 20 minutos.
 - Asignar una única tarea presencial a cada voluntario.
 - Confirmar el texto exacto del presentador.
 - Establecer una alternativa en papel si falla la conexión.
@@ -807,7 +807,7 @@ Una conversación positiva sin fecha no es un piloto comprometido.
 - Uruguay A verifica material y ayuda solo ante fricciones.
 - Uruguay B, si está disponible, observa una muestra por intervalos.
 - Gian supervisa métricas y errores remotamente.
-- Denis permanece disponible para coordinación remota.
+- Deni permanece disponible para coordinación remota.
 - No bloquear la fila.
 - No insistir a quien no quiera participar.
 - Las incidencias se registran en un formulario breve.
@@ -827,7 +827,7 @@ Una conversación positiva sin fecha no es un piloto comprometido.
   3. ¿La recompensa valió el esfuerzo?
   4. ¿Lo harías de nuevo?
   5. ¿Instalarías una app para automatizarlo?
-- Denis entrevista remotamente al artista o productor dentro de las siguientes 24 horas.
+- Deni entrevista remotamente al artista o productor dentro de las siguientes 24 horas.
 
 ### Informe en 48 horas
 
@@ -840,7 +840,7 @@ Debe contener:
 - Valor percibido por el artista.
 - Recomendación para la siguiente activación.
 
-ChatGPT puede generar el primer borrador desde datos y notas estructuradas. Gian verifica cifras y Denis valida interpretación comercial antes de compartirlo.
+ChatGPT puede generar el primer borrador desde datos y notas estructuradas. Gian verifica cifras y Deni valida interpretación comercial antes de compartirlo.
 
 ### Gate 3 — Conducta
 
@@ -861,12 +861,12 @@ ChatGPT puede generar el primer borrador desde datos y notas estructuradas. Gian
 ## Fase 4 — Convertir aprendizaje en primer ingreso
 
 **Duración:** 1–5 días después del piloto.  
-**Esfuerzo:** Denis 3–5 h; Gian 1–2 h.  
+**Esfuerzo:** Deni 3–5 h; Gian 1–2 h.  
 **Presupuesto:** 0 €.
 
 ### Reunión de cierre
 
-Denis presenta:
+Deni presenta:
 
 1. Qué se intentó.
 2. Qué porcentaje participó.
@@ -1091,7 +1091,7 @@ No gastar en anuncios B2B antes de completar outreach manual. No pagar una recom
 
 ### Operación AI-native
 
-- Minutos de Denis por prospecto.
+- Minutos de Deni por prospecto.
 - Porcentaje de mensajes que requieren cambios mayores.
 - Afirmaciones sin fuente detectadas antes del envío.
 - Exactitud de campos extraídos de entrevistas.
@@ -1239,7 +1239,7 @@ BeHere necesita artista y fan. Para reducir el problema de arranque:
 - Crear estructura exportable del CRM.
 - Crear el Project de ChatGPT y cargar únicamente documentos aprobados.
 
-**Denis**
+**Deni**
 
 - Definir criterios del prospecto.
 - Seleccionar 20 prospectos mediante investigación pública.
@@ -1256,7 +1256,7 @@ No se asignan tareas a voluntarios durante captación.
 - Incorporar a la landing los CTA y textos finales.
 - Preparar y evaluar prompts de investigación, mensaje y ficha de entrevista.
 
-**Denis**
+**Deni**
 
 - Enviar 8–10 contactos personalizados.
 - Agendar las primeras entrevistas.
