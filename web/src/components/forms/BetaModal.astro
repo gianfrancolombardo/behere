@@ -121,7 +121,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
 
 <script>
   import { trackLeadSubmitError, trackLeadSubmitSuccess } from '../../lib/analytics';
-  import { captureUtmParams, submitLead } from '../../lib/submitLead';
+  import { getSessionUtm, submitLead } from '../../lib/submitLead';
 
   const modal = document.getElementById('beta-modal');
   if (!modal) throw new Error('Beta modal not found');
@@ -196,7 +196,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
     }
 
     const data = new FormData(form);
-    const utm = captureUtmParams();
+    const utm = getSessionUtm();
     const email = String(data.get('email') ?? '');
     const city = String(data.get('city') ?? '');
 

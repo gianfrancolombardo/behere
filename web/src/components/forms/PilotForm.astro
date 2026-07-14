@@ -136,7 +136,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
 
 <script>
   import { trackLeadSubmitError, trackLeadSubmitSuccess } from '../../lib/analytics';
-  import { captureUtmParams, submitLead } from '../../lib/submitLead';
+  import { getSessionUtm, submitLead } from '../../lib/submitLead';
 
   document.querySelectorAll('.pilot-form').forEach((formEl) => {
     const form = formEl as HTMLFormElement;
@@ -177,7 +177,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
       }
 
       const data = new FormData(form);
-      const utm = captureUtmParams();
+      const utm = getSessionUtm();
       const name = String(data.get('name') ?? '');
       const email = String(data.get('email') ?? '');
 

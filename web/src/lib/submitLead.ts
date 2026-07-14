@@ -1,3 +1,5 @@
+const UTM_STORAGE_KEY = 'behere_utm';
+
 export interface UtmParams {
   utm_source?: string;
   utm_medium?: string;
@@ -11,6 +13,29 @@ export function captureUtmParams(): UtmParams {
     utm_medium: params.get('utm_medium') ?? undefined,
     utm_campaign: params.get('utm_campaign') ?? undefined,
   };
+}
+
+/** Reads UTM from URL on first visit, then sessionStorage for the rest of the session. */
+export function getSessionUtm(): UtmParams {
+  try {
+    const stored = sessionStorage.getItem(UTM_STORAGE_KEY);
+    if (stored) return JSON.parse(stored) as UtmParams;
+  } catch {
+    // Ignore malformed session data.
+  }
+
+  const utm = captureUtmParams();
+  const hasUtm = Boolean(utm.utm_source || utm.utm_medium || utm.utm_campaign);
+
+  if (hasUtm) {
+    try {
+      sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(utm));
+    } catch {
+      // Ignore quota errors in private browsing.
+    }
+  }
+
+  return utm;
 }
 
 export interface LeadPayload {

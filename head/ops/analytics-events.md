@@ -19,7 +19,7 @@
 
 **Distinción B2B / B2C:** propiedad `landing` (`b2b` | `b2c`) en todos los eventos custom. También se puede filtrar por URL (`/` vs `/app`).
 
-**UTM:** se capturan de la URL al entrar y se persisten en `sessionStorage` para adjuntarlos a eventos posteriores en la misma sesión.
+**UTM:** se capturan de la URL al entrar, se persisten en `sessionStorage` (`getSessionUtm` en `submitLead.ts`) y se adjuntan a eventos Umami y al payload del lead, aunque la URL ya no muestre los parámetros.
 
 ---
 

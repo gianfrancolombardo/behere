@@ -18,8 +18,8 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 | 3 | Privacidad, consentimiento y errores visibles | 1 | 1 h | Completada 2026-07-14 |
 | 4 | Limpieza de verdad comercial en landings | — | 1–2 h | Completada 2026-07-14 |
 | 5 | CRM exportable + estructura de etapas | — | 1 h | Completada 2026-07-14 |
-| 6 | Project de ChatGPT + prompts base | 5 | 2–3 h | Pendiente |
-| 7 | QR/UTM y pruebas móviles end-to-end | 1, 2, 4, 10 | 1–2 h | Pendiente |
+| 6 | Asistente IA (Gemini Gem) + prompts base | 5 | 2–3 h | Completada 2026-07-15 |
+| 7 | QR/UTM y pruebas móviles end-to-end | 1, 2, 4, 10 | 1–2 h | En curso — QR generados; falta prueba móvil |
 | 8 | Handoff a Deni + soporte Fase 1 | 1–7 | 1 h | Pendiente |
 | 9 | Comprar dominio | — | 30 min | Completada 2026-07-14 |
 | 10 | Configurar DNS (trybehere.com → Netlify) | 9 | 30–60 min | Completada 2026-07-14 |
@@ -160,29 +160,18 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 
 ---
 
-## Tarea 6 — Project de ChatGPT y prompts base
+## Tarea 6 — Asistente IA (Gemini Gem) y prompts base
+
+**Completada:** 2026-07-15  
+**Gem:** [BeHere — Prospecting v1](https://gemini.google.com/gem/7d8896898d3f)  
+**Implementación:** prompts en `head/prompts/`; setup en `head/ops/gemini-gem-setup.md`.
 
 **Objetivo:** que Deni pueda operar el flujo AI-native desde el día 1.
 
-**Archivos a cargar en el Project:**
-- `validation-to-first-revenue-plan.md`
-- `lean-canvas.md`
-- Guion de entrevista (del plan)
-- Plantilla de ficha post-entrevista
-- Reglas de guardrails (no inventar, marcar hipótesis, citar fuente)
-
-**Prompts a preparar (v1):**
-1. Investigación de prospecto (rápida, no Deep Research)
-2. Mensaje inicial personalizado
-3. Preparación de entrevista
-4. Ficha estructurada post-entrevista
-5. Seguimiento post-entrevista
-6. Síntesis semanal
-
 **Criterios de aceptación:**
-- [ ] Project creado con instrucciones permanentes.
-- [ ] Prompts versionados en repo o doc compartido (`prompts/` o sección en doc Deni).
-- [ ] Probados con 3 prospectos públicos ficticios o reales.
+- [x] Gem creada con instrucciones permanentes.
+- [x] Prompts versionados en repo (`head/prompts/`).
+- [ ] Probados con 3 prospectos públicos ficticios o reales (`test-cases-v1.md`).
 - [ ] Cero afirmaciones inventadas en los 3 casos de prueba.
 - [ ] Deni tiene acceso y sabe cuál prompt usar en cada paso.
 
@@ -190,12 +179,20 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 
 ## Tarea 7 — QR, UTM y prueba end-to-end
 
+**En curso:** 2026-07-15 — UTM unificado en `getSessionUtm()`; QR en `head/ops/qr/`. Pendiente: prueba móvil iPhone/Android.
+
 **Objetivo:** validar el sistema completo antes de outreach.
 
+**Implementación:**
+- QR PNG/SVG: `head/ops/qr/b2b-outreach.*`, `b2c-pilot.*`
+- Config: `head/ops/qr/campaigns.json`
+- Regenerar: `cd web && npm run generate:qr`
+- UTM en formularios: `getSessionUtm()` (misma sesión que Umami)
+
 **Acciones:**
-- Generar 2 QR: B2B outreach, B2C piloto.
-- URLs con UTM predefinidos.
-- Probar flujo en iPhone y Android: escaneo → landing → formulario → lead guardado → evento registrado.
+- [x] Generar 2 QR: B2B outreach, B2C piloto.
+- [x] URLs con UTM predefinidos.
+- [ ] Probar flujo en iPhone y Android: escaneo → landing → formulario → lead guardado → evento registrado.
 
 **Criterios de aceptación:**
 - [ ] Gate 0 del plan cumplido en su totalidad.
@@ -268,7 +265,7 @@ Marcar todo antes de decir “listo para captar”:
 - [x] Eventos sin duplicados
 - [x] Landings honestas y sin roturas
 - [x] CRM exportable operativo
-- [ ] Project + prompts entregados a Deni
+- [ ] Gem compartida con Deni + smoke test (`test-cases-v1.md` caso 1)
 - [ ] 3 pruebas IA sin alucinaciones
 - [x] Responsable de respuesta <24 h definido
 - [x] Dominio `trybehere.com` registrado
@@ -293,10 +290,12 @@ Marcar todo antes de decir “listo para captar”:
 - Landings: `web/src/pages/index.astro`, `web/src/pages/app/index.astro`
 - Formularios: `web/src/components/forms/PilotForm.astro`, `BetaModal.astro`
 - Persistencia: `web/src/lib/submitLead.ts`, Web3Forms (`PUBLIC_WEB3FORMS_ACCESS_KEY`)
-- Analítica: `web/src/lib/analytics.ts`, Umami (`PUBLIC_UMAMI_WEBSITE_ID`), `head/ops/analytics-events.md`
+- Analítica: `web/src/lib/analytics.ts`, Umami (`PUBLIC_UMAMI_WEBSITE_ID`), `head/ops/analytics-events.md` (completada 2026-07-15)
 - Privacidad: `web/src/pages/privacidad.astro`, `head/ops/privacidad-operativa.md`
 - CTAs: `head/plans/cta-hypotheses.md`
 - Contenido: `web/src/content/b2b.ts`, `b2c.ts`
 - Deploy: `netlify.toml`
 - Dominio: `trybehere.com` (registrado y DNS en producción 2026-07-14)
 - CRM B2B: [Google Sheets](https://docs.google.com/spreadsheets/d/1EMn4J-KOSb-L48-y15rUnicn3DlDeyuxlREZuSneOE4/edit?usp=sharing) (creado 2026-07-14)
+- Prompts AI-native: `head/prompts/` · Gem: https://gemini.google.com/gem/7d8896898d3f · setup: `head/ops/gemini-gem-setup.md`
+- QR campañas: `head/ops/qr/` · regenerar: `npm run generate:qr` (desde `web/`)

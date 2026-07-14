@@ -1,6 +1,5 @@
-import { captureUtmParams, type UtmParams } from './submitLead';
+import { getSessionUtm } from './submitLead';
 
-const UTM_STORAGE_KEY = 'behere_utm';
 const UMAMI_READY_TIMEOUT_MS = 10_000;
 
 export type LandingType = 'b2b' | 'b2c';
@@ -21,28 +20,6 @@ declare global {
 
 const pendingEvents: PendingEvent[] = [];
 let umamiReady = false;
-
-export function getSessionUtm(): UtmParams {
-  try {
-    const stored = sessionStorage.getItem(UTM_STORAGE_KEY);
-    if (stored) return JSON.parse(stored) as UtmParams;
-  } catch {
-    // Ignore malformed session data.
-  }
-
-  const utm = captureUtmParams();
-  const hasUtm = Boolean(utm.utm_source || utm.utm_medium || utm.utm_campaign);
-
-  if (hasUtm) {
-    try {
-      sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(utm));
-    } catch {
-      // Ignore quota errors in private browsing.
-    }
-  }
-
-  return utm;
-}
 
 function buildProps(
   landing: LandingType,

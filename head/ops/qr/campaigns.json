@@ -1,0 +1,14 @@
+[
+  {
+    "id": "b2b-outreach",
+    "label": "B2B outreach — piloto artistas/salas",
+    "landing": "b2b",
+    "url": "https://trybehere.com/?utm_source=qr&utm_medium=print&utm_campaign=b2b-outreach"
+  },
+  {
+    "id": "b2c-pilot",
+    "label": "B2C piloto — waitlist fans",
+    "landing": "b2c",
+    "url": "https://trybehere.com/app?utm_source=qr&utm_medium=print&utm_campaign=b2c-pilot"
+  }
+]

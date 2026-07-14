@@ -11,7 +11,7 @@
 
 1. Lee primero **“Por dónde empezar hoy”**.
 2. Trabaja en **paquetes** (bloques de 45–90 min), no en tareas sueltas.
-3. Usa ChatGPT como asistente, no como decisor.
+3. Usa la Gem de Gemini como asistente, no como decisor.
 4. Todo mensaje se revisa y se envía manualmente.
 5. Si la IA inventa un dato, se descarta aunque suene bien.
 
@@ -34,7 +34,7 @@ Haz solo esto (2–3 h):
 
 Haz esto en orden (día 1):
 
-1. Revisa el Project de ChatGPT y los prompts v1.
+1. Revisa la [Gem BeHere Prospecting](https://gemini.google.com/gem/7d8896898d3f) y los prompts v1 en `head/prompts/`.
 2. Valida 3 filas del CRM con fuentes reales.
 3. Envía **8–10 contactos** personalizados.
 4. Agenda primeras entrevistas.
@@ -120,6 +120,8 @@ Prospecto → Investigación IA → Verificación humana → Mensaje IA → Edic
 ---
 
 ## Prompts optimizados
+
+> **Fuente de verdad versionada:** [`head/prompts/README.md`](../prompts/README.md). Si hay diferencia con este doc, gana el repo.
 
 ### Principios (basados en buenas prácticas actuales)
 
