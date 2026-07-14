@@ -13,6 +13,10 @@ interface Props {
 
 const { seo, current, stickyCta, stickyVariant } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const umamiWebsiteId =
+  import.meta.env.PUBLIC_UMAMI_WEBSITE_ID ?? '18ee3c65-c408-45b3-8203-190d545762ee';
+const umamiScriptUrl =
+  import.meta.env.PUBLIC_UMAMI_SCRIPT_URL ?? 'https://cloud.umami.is/script.js';
 ---
 
 <!doctype html>
@@ -32,14 +36,30 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={seo.ogTitle} />
     <meta name="twitter:description" content={seo.ogDescription} />
+    {
+      umamiWebsiteId && (
+        <script
+          defer
+          src={umamiScriptUrl}
+          data-website-id={umamiWebsiteId}
+          data-domains="trybehere.com,www.trybehere.com,localhost,127.0.0.1"
+        />
+      )
+    }
   </head>
-  <body class="min-h-screen overflow-x-hidden">
+  <body class="min-h-screen overflow-x-hidden" data-landing={current}>
     <SiteHeader {current} {stickyCta} {stickyVariant} />
     <main class="pt-16">
       <slot />
     </main>
     <SiteFooter />
     <slot name="scripts" />
+    <script>
+      import { initAnalytics, type LandingType } from '../lib/analytics';
+
+      const landing = document.body.dataset.landing as LandingType;
+      if (landing) initAnalytics(landing);
+    </script>
     <script>
       const revealables = document.querySelectorAll('.reveal');
       if (revealables.length) {

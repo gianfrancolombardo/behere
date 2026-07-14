@@ -135,6 +135,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
 </div>
 
 <script>
+  import { trackLeadSubmitError, trackLeadSubmitSuccess } from '../../lib/analytics';
   import { captureUtmParams, submitLead } from '../../lib/submitLead';
 
   document.querySelectorAll('.pilot-form').forEach((formEl) => {
@@ -144,7 +145,8 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
     const submitBtn = form.querySelector('.pilot-form-submit') as HTMLButtonElement;
     const message = form.dataset.successMessage ?? 'Recibido.';
     const accessKey = form.dataset.accessKey ?? '';
-    const landing = form.dataset.landing ?? '/';
+    const landingPath = form.dataset.landing ?? '/';
+    const landingType = 'b2b' as const;
     const defaultBtnText = submitBtn?.textContent ?? 'Enviar';
 
     form.addEventListener('submit', async (e) => {
@@ -156,6 +158,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
       }
 
       if (!accessKey) {
+        trackLeadSubmitError(landingType, 'missing_access_key');
         if (errorEl) {
           errorEl.textContent = 'Configuración incompleta. Inténtalo más tarde.';
           errorEl.classList.remove('hidden');
@@ -165,6 +168,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
 
       const consent = form.querySelector('input[name="consent"]') as HTMLInputElement;
       if (!consent?.checked) {
+        trackLeadSubmitError(landingType, 'consent_required');
         if (errorEl) {
           errorEl.textContent = 'Debes aceptar la política de privacidad para continuar.';
           errorEl.classList.remove('hidden');
@@ -188,7 +192,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
         email,
         botcheck: false,
         form_type: 'b2b_pilot',
-        landing,
+        landing: landingPath,
         page_url: window.location.href,
         submitted_at: new Date().toISOString(),
         name,
@@ -203,6 +207,11 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
       }
 
       if (result.ok) {
+        trackLeadSubmitSuccess(landingType, {
+          form_type: 'b2b_pilot',
+          city: String(data.get('city') ?? ''),
+        });
+
         form.querySelectorAll('input:not([name="botcheck"]), select, button').forEach((el) => {
           (el as HTMLInputElement).disabled = true;
         });
@@ -213,6 +222,8 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
         }
         return;
       }
+
+      trackLeadSubmitError(landingType, 'api_error', { form_type: 'b2b_pilot' });
 
       if (submitBtn) {
         submitBtn.disabled = false;

@@ -14,7 +14,7 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 | # | Tarea | Depende de | Estimación | Estado |
 |---|-------|------------|------------|--------|
 | 1 | Persistencia de leads B2B y B2C | — | 2–3 h | Completada 2026-07-14 |
-| 2 | Analítica y eventos del embudo | 1 | 1–2 h | Pendiente (retomar en deploy) |
+| 2 | Analítica y eventos del embudo | 1 | 1–2 h | Completada 2026-07-15 |
 | 3 | Privacidad, consentimiento y errores visibles | 1 | 1 h | Completada 2026-07-14 |
 | 4 | Limpieza de verdad comercial en landings | — | 1–2 h | Completada 2026-07-14 |
 | 5 | CRM exportable + estructura de etapas | — | 1 h | Completada 2026-07-14 |
@@ -22,7 +22,7 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 | 7 | QR/UTM y pruebas móviles end-to-end | 1, 2, 4, 10 | 1–2 h | Pendiente |
 | 8 | Handoff a Deni + soporte Fase 1 | 1–7 | 1 h | Pendiente |
 | 9 | Comprar dominio | — | 30 min | Completada 2026-07-14 |
-| 10 | Configurar DNS (trybehere.com → Netlify) | 9 | 30–60 min | Pendiente |
+| 10 | Configurar DNS (trybehere.com → Netlify) | 9 | 30–60 min | Completada 2026-07-14 |
 
 ---
 
@@ -40,8 +40,8 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 - Mostrar éxito y error de forma visible al usuario.
 
 **Criterios de aceptación:**
-- [ ] Un envío B2B de prueba queda guardado y es recuperable.
-- [ ] Un envío B2C de prueba queda guardado y es recuperable.
+- [x] Un envío B2B de prueba queda guardado y es recuperable.
+- [x] Un envío B2C de prueba queda guardado y es recuperable.
 - [x] Campos mínimos persistidos: email, nombre (B2B), ciudad, tipo de acto/show, timestamp, landing, UTM si existe.
 - [x] Submit inválido muestra error sin perder datos ya escritos.
 - [x] No hay secretos ni credenciales en el repositorio.
@@ -50,7 +50,10 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 
 ## Tarea 2 — Analítica y eventos
 
-**Estado:** Pendiente — retomar en deploy.
+**Completada:** 2026-07-15  
+**Herramienta:** Umami Cloud (plan Hobby). Website ID: `18ee3c65-c408-45b3-8203-190d545762ee`  
+**Implementación:** `web/src/lib/analytics.ts`, `BaseLayout.astro`, formularios.  
+**Documentación:** `head/ops/analytics-events.md`.
 
 **Objetivo:** medir embudo antes de enviar tráfico o QR.
 
@@ -66,10 +69,10 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 - Conservar fuente: landing, UTM, país/ciudad declarada, fecha.
 
 **Criterios de aceptación:**
-- [ ] Cada evento aparece una sola vez por acción real.
-- [ ] Se distingue tráfico B2B (`/`) de B2C (`/app`).
-- [ ] Exportación o vista simple permite revisar embudo sin entrar a consola del navegador.
-- [ ] Documentado qué mide cada CTA B2B y B2C (intención distinta; no mezclar).
+- [x] Cada evento aparece una sola vez por acción real.
+- [x] Se distingue tráfico B2B (`/`) de B2C (`/app`).
+- [x] Exportación o vista simple permite revisar embudo sin entrar a consola del navegador.
+- [x] Documentado qué mide cada CTA B2B y B2C (intención distinta; no mezclar).
 
 ---
 
@@ -234,7 +237,7 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 
 ## Tarea 10 — Configurar DNS
 
-**Estado:** Pendiente  
+**Completada:** 2026-07-14  
 **Dominio:** `trybehere.com` → Netlify
 
 **Objetivo:** que las landings respondan en producción con HTTPS en el dominio propio.
@@ -248,11 +251,11 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 - Configurar `PUBLIC_WEB3FORMS_ACCESS_KEY` en variables de entorno de Netlify.
 
 **Criterios de aceptación:**
-- [ ] `https://trybehere.com` carga la landing B2B (`/`).
-- [ ] `https://trybehere.com/app` carga la landing B2C.
-- [ ] `https://www.trybehere.com` redirige correctamente al apex.
-- [ ] SSL válido sin avisos en navegador.
-- [ ] Canonical y OG URLs usan `trybehere.com`.
+- [x] `https://trybehere.com` carga la landing B2B (`/`).
+- [x] `https://trybehere.com/app` carga la landing B2C.
+- [x] `https://www.trybehere.com` redirige correctamente al apex.
+- [x] SSL válido sin avisos en navegador.
+- [x] Canonical y OG URLs usan `trybehere.com`.
 
 ---
 
@@ -260,16 +263,16 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 
 Marcar todo antes de decir “listo para captar”:
 
-- [ ] Lead B2B de prueba guardado
-- [ ] Lead B2C de prueba guardado
-- [ ] Eventos sin duplicados
+- [x] Lead B2B de prueba guardado
+- [x] Lead B2C de prueba guardado
+- [x] Eventos sin duplicados
 - [x] Landings honestas y sin roturas
 - [x] CRM exportable operativo
 - [ ] Project + prompts entregados a Deni
 - [ ] 3 pruebas IA sin alucinaciones
 - [x] Responsable de respuesta <24 h definido
 - [x] Dominio `trybehere.com` registrado
-- [ ] DNS apuntando a producción con HTTPS
+- [x] DNS apuntando a producción con HTTPS
 
 ---
 
@@ -290,9 +293,10 @@ Marcar todo antes de decir “listo para captar”:
 - Landings: `web/src/pages/index.astro`, `web/src/pages/app/index.astro`
 - Formularios: `web/src/components/forms/PilotForm.astro`, `BetaModal.astro`
 - Persistencia: `web/src/lib/submitLead.ts`, Web3Forms (`PUBLIC_WEB3FORMS_ACCESS_KEY`)
+- Analítica: `web/src/lib/analytics.ts`, Umami (`PUBLIC_UMAMI_WEBSITE_ID`), `head/ops/analytics-events.md`
 - Privacidad: `web/src/pages/privacidad.astro`, `head/ops/privacidad-operativa.md`
 - CTAs: `head/plans/cta-hypotheses.md`
 - Contenido: `web/src/content/b2b.ts`, `b2c.ts`
 - Deploy: `netlify.toml`
-- Dominio: `trybehere.com` (registrado 2026-07-14; DNS pendiente)
+- Dominio: `trybehere.com` (registrado y DNS en producción 2026-07-14)
 - CRM B2B: [Google Sheets](https://docs.google.com/spreadsheets/d/1EMn4J-KOSb-L48-y15rUnicn3DlDeyuxlREZuSneOE4/edit?usp=sharing) (creado 2026-07-14)
