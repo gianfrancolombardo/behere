@@ -13,7 +13,7 @@ export const b2cContent: LandingContent = {
     headline: 'Siente el ruido. Tu premio te espera al salir.',
     subheadline:
       'Activa el Modo Show, guarda el móvil y vive el directo sin filtros. Si aguantas todo el set, desbloqueas el contenido exclusivo que el artista subió para quienes estuvieron de verdad.',
-    primaryCta: '¿La usarías?',
+    primaryCta: 'Quiero acceso anticipado',
     secondaryCta: '¿Cómo funciona?',
     secondaryCtaHref: '#how-it-works',
     trustBar: [
@@ -94,13 +94,13 @@ export const b2cContent: LandingContent = {
     ],
     microcopy:
       'Si aguantas, ganas. Si no, siempre puedes comprar el contenido después. Pero confía: una vez que lo pruebas, no quieres volver atrás.',
-    intermediateCta: 'Me interesa',
+    intermediateCta: 'Quiero acceso anticipado',
   },
   challenge: {
     title: '¿Aguantas todo el set sin mirar el móvil?',
     body: 'A que no aguantas todo el concierto sin revisar WhatsApp.\n\nA que no puedes ver a tu artista favorito a los ojos sin pensar en el encuadre.\n\nA que no eres capaz de sentir un show entero sin documentarlo para nadie.\n\nPon a prueba tu atención. Nosotros ponemos el premio.',
     placeholder:
-      'Ayúdanos a saber si esto tiene sentido. Los primeros en apuntarse tendrán prioridad.',
+      'Los primeros en apuntarse tendrán prioridad cuando abramos la beta en su ciudad.',
   },
   reward: {
     title: 'Esto es lo que puede desbloquear al salir',
@@ -147,26 +147,15 @@ export const b2cContent: LandingContent = {
       },
     ],
   },
-  testimonials: {
-    title: 'La sala entera lo está haciendo',
-    items: [
-      {
-        quote:
-          'No pensé que aguantaría dos horas sin el móvil. Pero cuando salí y vi lo que el artista había preparado... fue mejor que haberlo grabado yo mil veces.',
-        author: '[Nombre]',
-        role: 'Fan de [Artista]',
-        placeholder: true,
-      },
-      {
-        quote:
-          'Por primera vez bailé un concierto entero sin pensar en Instagram. Y tengo el video más épico de mi galería.',
-        author: '[Nombre]',
-        role: '[Ciudad]',
-        placeholder: true,
-      },
+  earlyAccess: {
+    title: 'Beta cerrada — prioridad para los primeros',
+    body: 'BeHere llegará ciudad a ciudad con artistas y salas seleccionados. Apúntate ahora y sé de los primeros en probarlo cuando abramos en la tuya.',
+    bullets: [
+      'Acceso anticipado antes del lanzamiento público',
+      'Contenido exclusivo oficial del artista como premio',
+      'Sin spam — solo un email cuando haya novedades en tu ciudad',
     ],
-    footnote:
-      'Estamos validando la idea. Déjanos tu email si quieres ser de los primeros.',
+    footnote: 'Cuanto antes te apuntes, más arriba estarás en la lista.',
   },
   faq: {
     items: [
@@ -178,12 +167,12 @@ export const b2cContent: LandingContent = {
       {
         question: '¿Cómo sabéis que no miro el móvil?',
         answer:
-          'El Modo Show detecta si desbloqueas la pantalla. Si aguantas, ganas. Es un juego, no una vigilancia. Sin cámaras. Sin datos personales raros. Solo tu teléfono y tu fuerza de voluntad.',
+          'El Modo Show mantiene tu compromiso durante el show. Si lo completas, desbloqueas tu premio. Es un juego con recompensa real — sin cámaras ni vigilancia invasiva.',
       },
       {
         question: '¿Funciona sin internet en la sala?',
         answer:
-          'Sí. El Modo Show funciona offline. Al salir del recinto, cuando recuperas señal, se sincroniza y recibes tu recompensa.',
+          'Pensado para salas con mala cobertura. Al salir del recinto, cuando recuperas señal, recibes tu recompensa.',
       },
       {
         question: '¿De verdad es gratis?',
@@ -198,30 +187,31 @@ export const b2cContent: LandingContent = {
       {
         question: '¿En qué salas funciona?',
         answer:
-          'Estamos en beta cerrada con salas y artistas seleccionados. Déjanos tu email y te avisamos cuando lleguemos a tu ciudad.',
+          'Estamos en beta cerrada con salas y artistas seleccionados. Déjanos tu email y ciudad — te avisamos cuando lleguemos.',
       },
       {
         question: '¿Puedo usarlo en cualquier concierto?',
         answer:
-          'Solo en shows que tengan acuerdo con BeHere. Pero cada vez son más. Consulta la cartelera dentro de la app (próximamente).',
+          'Solo en shows con acuerdo BeHere. La cartelera estará disponible en la app próximamente.',
       },
     ],
   },
   finalCta: {
     title: 'Tu pantalla de seis pulgadas no es más grande que este escenario',
     subtitle: 'El próximo show puede ser diferente. Modo Show. Bolsillo. Presencia.',
-    cta: 'Quiero que me avisen',
+    cta: 'Quiero acceso anticipado',
   },
   betaModal: {
-    title: '¿Usarías BeHere en tu próximo show?',
-    body: 'Estamos construyendo la app que premia estar presente. Déjanos tu email y te avisamos cuando podamos probarla cerca de ti.',
-    cta: 'Avísame cuando esté listo',
-    microcopy: 'Sin spam. Solo un email cuando tengamos novedades.',
+    title: 'Acceso anticipado a BeHere',
+    body: 'Sé de los primeros en probarlo cuando lleguemos a tu ciudad. Déjanos tu email y te avisamos en cuanto abramos la beta cerca de ti.',
+    cta: 'Unirme a la lista',
+    microcopy: 'Sin spam. Solo un email cuando haya novedades en tu ciudad.',
     successMessage:
-      'Listo. Te avisaremos cuando BeHere esté listo para probar. Gracias por el interés.',
+      'Listo. Eres de los primeros en la lista. Te avisamos cuando BeHere esté disponible cerca de ti.',
     fields: {
       email: 'Email',
+      city: 'Ciudad',
     },
   },
-  stickyCta: 'Avísame',
+  stickyCta: 'Acceso anticipado',
 };

@@ -16,10 +16,19 @@ const {
   bare = false,
   id = 'pilot-form',
 } = Astro.props;
+
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY ?? '';
 ---
 
 <div id={id} class:list={[!bare && 'panel p-6 md:p-8', compact && 'lg:p-6']}>
-  <form class="pilot-form space-y-4" data-success-message={successMessage}>
+  <form
+    class="pilot-form space-y-4"
+    data-success-message={successMessage}
+    data-access-key={accessKey}
+    data-landing="/"
+  >
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" aria-hidden="true" />
+
     <div class="grid gap-4 sm:grid-cols-2">
       <div class="sm:col-span-1">
         <label for={`${id}-name`} class="mb-1.5 block text-sm font-medium text-text-muted">
@@ -90,37 +99,128 @@ const {
         />
       </div>
     </div>
+
+    <label class="flex cursor-pointer items-start gap-3 text-left text-xs leading-relaxed text-text-muted">
+      <input
+        type="checkbox"
+        name="consent"
+        required
+        class="mt-0.5 h-4 w-4 shrink-0 rounded border-border accent-accent"
+      />
+      <span>
+        Acepto que BeHere use mis datos para contactarme sobre el piloto.
+        <a href="/privacidad" class="text-accent hover:underline">Política de privacidad</a>.
+      </span>
+    </label>
+
     <button
       type="submit"
-      class="flex min-h-11 w-full items-center justify-center rounded-full bg-accent text-sm font-semibold text-bg transition-colors hover:bg-accent-dim sm:w-auto sm:px-8"
+      class="pilot-form-submit flex min-h-11 w-full items-center justify-center rounded-full bg-accent text-sm font-semibold text-bg transition-colors hover:bg-accent-dim disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-8"
       data-cta="pilot-form-submit"
     >
       Solicitar piloto gratuito
     </button>
     <p class="text-center text-xs text-text-muted sm:text-left">{microcopy}</p>
-    <div class="pilot-form-success hidden rounded-[10px] border border-accent/30 bg-accent/10 p-4 text-sm text-accent" role="status"></div>
+    <div
+      class="pilot-form-error hidden rounded-[10px] border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-300"
+      role="alert"
+    >
+    </div>
+    <div
+      class="pilot-form-success hidden rounded-[10px] border border-accent/30 bg-accent/10 p-4 text-sm text-accent"
+      role="status"
+    >
+    </div>
   </form>
 </div>
 
 <script>
+  import { captureUtmParams, submitLead } from '../../lib/submitLead';
+
   document.querySelectorAll('.pilot-form').forEach((formEl) => {
     const form = formEl as HTMLFormElement;
     const successEl = form.querySelector('.pilot-form-success') as HTMLElement;
+    const errorEl = form.querySelector('.pilot-form-error') as HTMLElement;
+    const submitBtn = form.querySelector('.pilot-form-submit') as HTMLButtonElement;
     const message = form.dataset.successMessage ?? 'Recibido.';
+    const accessKey = form.dataset.accessKey ?? '';
+    const landing = form.dataset.landing ?? '/';
+    const defaultBtnText = submitBtn?.textContent ?? 'Enviar';
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const data = new FormData(form);
-      const payload = Object.fromEntries(data.entries());
-      console.info('[BeHere Pilot Lead]', payload);
 
-      form.querySelectorAll('input, select, button').forEach((el) => {
-        (el as HTMLInputElement).disabled = true;
+      if (errorEl) {
+        errorEl.textContent = '';
+        errorEl.classList.add('hidden');
+      }
+
+      if (!accessKey) {
+        if (errorEl) {
+          errorEl.textContent = 'Configuración incompleta. Inténtalo más tarde.';
+          errorEl.classList.remove('hidden');
+        }
+        return;
+      }
+
+      const consent = form.querySelector('input[name="consent"]') as HTMLInputElement;
+      if (!consent?.checked) {
+        if (errorEl) {
+          errorEl.textContent = 'Debes aceptar la política de privacidad para continuar.';
+          errorEl.classList.remove('hidden');
+        }
+        return;
+      }
+
+      const data = new FormData(form);
+      const utm = captureUtmParams();
+      const name = String(data.get('name') ?? '');
+      const email = String(data.get('email') ?? '');
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviando...';
+      }
+
+      const result = await submitLead({
+        access_key: accessKey,
+        subject: `[BeHere B2B] Solicitud piloto — ${name}`,
+        email,
+        botcheck: false,
+        form_type: 'b2b_pilot',
+        landing,
+        page_url: window.location.href,
+        submitted_at: new Date().toISOString(),
+        name,
+        city: String(data.get('city') ?? ''),
+        act_type: String(data.get('actType') ?? ''),
+        next_show: String(data.get('nextShow') ?? '') || undefined,
+        ...utm,
       });
 
-      if (successEl) {
-        successEl.textContent = message;
-        successEl.classList.remove('hidden');
+      if (submitBtn) {
+        submitBtn.textContent = defaultBtnText;
+      }
+
+      if (result.ok) {
+        form.querySelectorAll('input:not([name="botcheck"]), select, button').forEach((el) => {
+          (el as HTMLInputElement).disabled = true;
+        });
+
+        if (successEl) {
+          successEl.textContent = message;
+          successEl.classList.remove('hidden');
+        }
+        return;
+      }
+
+      if (submitBtn) {
+        submitBtn.disabled = false;
+      }
+
+      if (errorEl) {
+        errorEl.textContent = result.message;
+        errorEl.classList.remove('hidden');
       }
     });
   });

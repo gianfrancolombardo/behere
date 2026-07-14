@@ -11,20 +11,25 @@
 
 No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la anterior, salvo bloqueo externo documentado.
 
-| # | Tarea | Depende de | Estimación |
-|---|-------|------------|------------|
-| 1 | Persistencia de leads B2B y B2C | — | 2–3 h |
-| 2 | Analítica y eventos del embudo | 1 | 1–2 h |
-| 3 | Privacidad, consentimiento y errores visibles | 1 | 1 h |
-| 4 | Limpieza de verdad comercial en landings | — | 1–2 h |
-| 5 | CRM exportable + estructura de etapas | — | 1 h |
-| 6 | Project de ChatGPT + prompts base | 5 | 2–3 h |
-| 7 | QR/UTM y pruebas móviles end-to-end | 1, 2, 4 | 1–2 h |
-| 8 | Handoff a Deni + soporte Fase 1 | 1–7 | 1 h |
+| # | Tarea | Depende de | Estimación | Estado |
+|---|-------|------------|------------|--------|
+| 1 | Persistencia de leads B2B y B2C | — | 2–3 h | Completada 2026-07-14 |
+| 2 | Analítica y eventos del embudo | 1 | 1–2 h | Pendiente (retomar en deploy) |
+| 3 | Privacidad, consentimiento y errores visibles | 1 | 1 h | Completada 2026-07-14 |
+| 4 | Limpieza de verdad comercial en landings | — | 1–2 h | Completada 2026-07-14 |
+| 5 | CRM exportable + estructura de etapas | — | 1 h | Completada 2026-07-14 |
+| 6 | Project de ChatGPT + prompts base | 5 | 2–3 h | Pendiente |
+| 7 | QR/UTM y pruebas móviles end-to-end | 1, 2, 4, 10 | 1–2 h | Pendiente |
+| 8 | Handoff a Deni + soporte Fase 1 | 1–7 | 1 h | Pendiente |
+| 9 | Comprar dominio | — | 30 min | Completada 2026-07-14 |
+| 10 | Configurar DNS (trybehere.com → Netlify) | 9 | 30–60 min | Pendiente |
 
 ---
 
 ## Tarea 1 — Persistencia de leads
+
+**Completada:** 2026-07-14  
+**Implementación:** Web3Forms (`submitLead.ts`), `PilotForm` B2B y `BetaModal` B2C.
 
 **Objetivo:** que ningún envío de formulario se pierda al cerrar el navegador.
 
@@ -37,13 +42,15 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 **Criterios de aceptación:**
 - [ ] Un envío B2B de prueba queda guardado y es recuperable.
 - [ ] Un envío B2C de prueba queda guardado y es recuperable.
-- [ ] Campos mínimos persistidos: email, nombre (B2B), ciudad, tipo de acto/show, timestamp, landing, UTM si existe.
-- [ ] Submit inválido muestra error sin perder datos ya escritos.
-- [ ] No hay secretos ni credenciales en el repositorio.
+- [x] Campos mínimos persistidos: email, nombre (B2B), ciudad, tipo de acto/show, timestamp, landing, UTM si existe.
+- [x] Submit inválido muestra error sin perder datos ya escritos.
+- [x] No hay secretos ni credenciales en el repositorio.
 
 ---
 
 ## Tarea 2 — Analítica y eventos
+
+**Estado:** Pendiente — retomar en deploy.
 
 **Objetivo:** medir embudo antes de enviar tráfico o QR.
 
@@ -68,6 +75,9 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 
 ## Tarea 3 — Privacidad y consentimiento
 
+**Completada:** 2026-07-14  
+**Implementación:** checkbox consentimiento, `/privacidad`, footer, `head/ops/privacidad-operativa.md`.
+
 **Objetivo:** cumplir mínimo legal/operativo para captar emails.
 
 **Acciones:**
@@ -76,13 +86,16 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 - Definir retención y quién responde en <24 h.
 
 **Criterios de aceptación:**
-- [ ] No se guarda email sin consentimiento.
-- [ ] Existe URL o página de privacidad accesible desde el formulario.
-- [ ] Deni aparece como responsable de respuesta comercial documentado.
+- [x] No se guarda email sin consentimiento.
+- [x] Existe URL o página de privacidad accesible desde el formulario.
+- [x] Deni aparece como responsable de respuesta comercial documentado.
 
 ---
 
 ## Tarea 4 — Verdad comercial en landings
+
+**Completada:** 2026-07-14  
+**Implementación:** copy B2B/B2C, `EarlyAccessSection`, ciudad en B2C, `head/plans/cta-hypotheses.md`, imágenes restauradas.
 
 **Objetivo:** que las landings no prometan lo que aún no existe.
 
@@ -95,14 +108,17 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 - Añadir ciudad al formulario B2C si se comparará demanda geográfica.
 
 **Criterios de aceptación:**
-- [ ] `/` y `/app` cargan sin imágenes rotas ni testimonios ficticios.
-- [ ] No se afirma plataforma completa, pilotos en marcha ni detección fiable.
-- [ ] CTA B2B y B2C documentados con métrica esperada cada uno.
-- [ ] Cambios de copy revisados contra `lean-canvas.md` y plan v2.0.
+- [x] `/` y `/app` cargan sin imágenes rotas ni testimonios ficticios.
+- [x] No se afirma plataforma completa, pilotos en marcha ni detección fiable.
+- [x] CTA B2B y B2C documentados con métrica esperada cada uno.
+- [x] Cambios de copy revisados contra `lean-canvas.md` y plan v2.0.
 
 ---
 
 ## Tarea 5 — CRM exportable
+
+**Completada:** 2026-07-14  
+**Implementación:** Google Sheets — [BeHere CRM B2B](https://docs.google.com/spreadsheets/d/1EMn4J-KOSb-L48-y15rUnicn3DlDeyuxlREZuSneOE4/edit?usp=sharing)
 
 **Objetivo:** que Deni trabaje en un sistema simple, portable y auditable.
 
@@ -134,10 +150,10 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 **Etapas:** Identificado → Contactado → Respondió → Entrevistado → Calificado → Piloto propuesto → Piloto comprometido → Pagado → Perdido.
 
 **Criterios de aceptación:**
-- [ ] CRM creado y compartido con Deni.
-- [ ] Exportable a CSV sin pérdida de columnas.
-- [ ] Cada fila puede tener fuente y siguiente acción.
-- [ ] Instrucciones de uso de 1 página para Deni.
+- [x] CRM creado y compartido con Deni.
+- [x] Exportable a CSV sin pérdida de columnas.
+- [x] Cada fila puede tener fuente y siguiente acción.
+- [x] Instrucciones de uso de 1 página para Deni.
 
 ---
 
@@ -202,6 +218,44 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 
 ---
 
+## Tarea 9 — Comprar dominio
+
+**Completada:** 2026-07-14  
+**Dominio:** `trybehere.com`
+
+**Objetivo:** tener dominio propio para landings, QR y outreach.
+
+**Criterios de aceptación:**
+- [x] Dominio registrado y activo en el registrador.
+- [x] Acceso al panel DNS del registrador.
+- [x] Dominio acordado con el equipo: `trybehere.com`.
+
+---
+
+## Tarea 10 — Configurar DNS
+
+**Estado:** Pendiente  
+**Dominio:** `trybehere.com` → Netlify
+
+**Objetivo:** que las landings respondan en producción con HTTPS en el dominio propio.
+
+**Acciones:**
+- Añadir dominio custom en Netlify (Site settings → Domain management).
+- Configurar registros DNS en el registrador (A/AAAA o CNAME según indique Netlify).
+- Configurar `www.trybehere.com` (redirect a apex o CNAME).
+- Verificar certificado SSL activo.
+- Actualizar `site` en `web/astro.config.mjs` a `https://trybehere.com`.
+- Configurar `PUBLIC_WEB3FORMS_ACCESS_KEY` en variables de entorno de Netlify.
+
+**Criterios de aceptación:**
+- [ ] `https://trybehere.com` carga la landing B2B (`/`).
+- [ ] `https://trybehere.com/app` carga la landing B2C.
+- [ ] `https://www.trybehere.com` redirige correctamente al apex.
+- [ ] SSL válido sin avisos en navegador.
+- [ ] Canonical y OG URLs usan `trybehere.com`.
+
+---
+
 ## Gate 0 — checklist final
 
 Marcar todo antes de decir “listo para captar”:
@@ -209,11 +263,13 @@ Marcar todo antes de decir “listo para captar”:
 - [ ] Lead B2B de prueba guardado
 - [ ] Lead B2C de prueba guardado
 - [ ] Eventos sin duplicados
-- [ ] Landings honestas y sin roturas
-- [ ] CRM exportable operativo
+- [x] Landings honestas y sin roturas
+- [x] CRM exportable operativo
 - [ ] Project + prompts entregados a Deni
 - [ ] 3 pruebas IA sin alucinaciones
-- [ ] Responsable de respuesta <24 h definido
+- [x] Responsable de respuesta <24 h definido
+- [x] Dominio `trybehere.com` registrado
+- [ ] DNS apuntando a producción con HTTPS
 
 ---
 
@@ -233,5 +289,10 @@ Marcar todo antes de decir “listo para captar”:
 
 - Landings: `web/src/pages/index.astro`, `web/src/pages/app/index.astro`
 - Formularios: `web/src/components/forms/PilotForm.astro`, `BetaModal.astro`
+- Persistencia: `web/src/lib/submitLead.ts`, Web3Forms (`PUBLIC_WEB3FORMS_ACCESS_KEY`)
+- Privacidad: `web/src/pages/privacidad.astro`, `head/ops/privacidad-operativa.md`
+- CTAs: `head/plans/cta-hypotheses.md`
 - Contenido: `web/src/content/b2b.ts`, `b2c.ts`
 - Deploy: `netlify.toml`
+- Dominio: `trybehere.com` (registrado 2026-07-14; DNS pendiente)
+- CRM B2B: [Google Sheets](https://docs.google.com/spreadsheets/d/1EMn4J-KOSb-L48-y15rUnicn3DlDeyuxlREZuSneOE4/edit?usp=sharing) (creado 2026-07-14)

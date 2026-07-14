@@ -96,7 +96,13 @@ export interface LandingContent {
     body: string;
     scarcity: string;
   };
-  testimonials: {
+  earlyAccess?: {
+    title: string;
+    body: string;
+    bullets?: string[];
+    footnote?: string;
+  };
+  testimonials?: {
     title: string;
     items: Testimonial[];
     footnote?: string;
@@ -141,6 +147,7 @@ export interface LandingContent {
     successMessage: string;
     fields: {
       email: string;
+      city: string;
     };
   };
   pilotForm?: {

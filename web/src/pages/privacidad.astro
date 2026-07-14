@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const seo = {
+  title: 'Política de privacidad — BeHere',
+  description:
+    'Información sobre cómo BeHere trata los datos recogidos en formularios de piloto y lista de espera.',
+  ogTitle: 'Política de privacidad — BeHere',
+  ogDescription: 'Cómo tratamos tu email y datos de contacto en BeHere.',
+};
+---
+
+<BaseLayout seo={seo} current="b2b" stickyCta="Piloto gratuito" stickyVariant="header">
+  <article class="section-padding">
+    <div class="container-main prose-behere mx-auto max-w-2xl">
+      <h1 class="font-display text-4xl font-bold">Política de privacidad</h1>
+      <p class="mt-4 text-sm text-text-muted">Última actualización: julio 2026</p>
+
+      <section class="mt-10 space-y-4 text-text-muted">
+        <h2 class="font-display text-xl font-bold text-text">Responsable</h2>
+        <p>
+          BeHere. Contacto comercial: Deni (operaciones). Email:
+          <a href="mailto:contacto@behere.app" class="text-accent hover:underline">contacto@behere.app</a>.
+          Respuesta en menos de 24 h laborables.
+        </p>
+      </section>
+
+      <section class="mt-10 space-y-4 text-text-muted">
+        <h2 class="font-display text-xl font-bold text-text">Qué datos recogemos</h2>
+        <ul class="list-disc space-y-2 pl-5">
+          <li>Email (obligatorio en todos los formularios)</li>
+          <li>Nombre, ciudad y tipo de acto (formulario B2B de piloto)</li>
+          <li>Ciudad (lista de espera B2C)</li>
+          <li>Fecha o descripción de próximo show (opcional, B2B)</li>
+          <li>URL de la página, landing de origen y parámetros UTM si existen</li>
+        </ul>
+      </section>
+
+      <section class="mt-10 space-y-4 text-text-muted">
+        <h2 class="font-display text-xl font-bold text-text">Para qué los usamos</h2>
+        <p>
+          Coordinar el piloto gratuito con artistas y salas, avisarte cuando BeHere esté disponible
+          en tu ciudad, y dar seguimiento comercial a tu solicitud.
+        </p>
+      </section>
+
+      <section class="mt-10 space-y-4 text-text-muted">
+        <h2 class="font-display text-xl font-bold text-text">Base y consentimiento</h2>
+        <p>
+          Solo guardamos tu email si marcas el consentimiento explícito en el formulario. Puedes
+          retirarlo en cualquier momento escribiendo a
+          <a href="mailto:contacto@behere.app" class="text-accent hover:underline">contacto@behere.app</a>.
+        </p>
+      </section>
+
+      <section class="mt-10 space-y-4 text-text-muted">
+        <h2 class="font-display text-xl font-bold text-text">Retención</h2>
+        <p>
+          Conservamos los datos mientras dure la fase de validación del piloto o hasta que
+          solicites su eliminación.
+        </p>
+      </section>
+
+      <section class="mt-10 space-y-4 text-text-muted">
+        <h2 class="font-display text-xl font-bold text-text">Tus derechos</h2>
+        <p>
+          Puedes solicitar acceso, rectificación o supresión de tus datos contactando a
+          <a href="mailto:contacto@behere.app" class="text-accent hover:underline">contacto@behere.app</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

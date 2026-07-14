@@ -1,0 +1,41 @@
+---
+import type { LandingContent } from '../../content/types';
+
+interface Props {
+  earlyAccess: NonNullable<LandingContent['earlyAccess']>;
+}
+
+const { earlyAccess } = Astro.props;
+const paragraphs = earlyAccess.body.split('\n\n');
+---
+
+<section class="section-padding">
+  <div class="container-main reveal">
+    <div class="panel mx-auto max-w-2xl p-8 text-center md:p-10">
+      <span class="chip-ticket mb-6 inline-flex">Acceso anticipado</span>
+      <h2 class="font-display text-3xl font-bold md:text-4xl">{earlyAccess.title}</h2>
+      <div class="mt-6 space-y-4 text-text-muted">
+        {paragraphs.map((p) => <p class="leading-relaxed">{p}</p>)}
+      </div>
+      {
+        earlyAccess.bullets && earlyAccess.bullets.length > 0 && (
+          <ul class="mt-8 space-y-3 text-left text-sm text-text-muted">
+            {earlyAccess.bullets.map((item) => (
+              <li class="flex gap-3">
+                <span class="text-accent" aria-hidden="true">
+                  ✓
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      {
+        earlyAccess.footnote && (
+          <p class="mt-8 text-sm text-text-muted/80">{earlyAccess.footnote}</p>
+        )
+      }
+    </div>
+  </div>
+</section>

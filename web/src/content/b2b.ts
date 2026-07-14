@@ -12,7 +12,7 @@ export const b2bContent: LandingContent = {
   hero: {
     headline: 'Tu show. Tu control. Tu ingreso extra.',
     subheadline:
-      'BeHere elimina las pantallas del público sin bolsas, sin seguridad y sin cuellos de botella. Recuperas la atención del directo y monetizas el contenido exclusivo que tú subes — a quienes estuvieron en la sala y a quienes no pudieron venir.',
+      'BeHere elimina las pantallas del público sin bolsas, sin seguridad y sin cuellos de botella. Recuperas la atención del directo y monetizas el contenido exclusivo que tú subes — a quienes estuvieron en la sala y a quienes no pudieron venir. Piloto gratuito para los primeros shows.',
     primaryCta: 'Solicitar piloto gratuito',
     secondaryCta: 'Ver cómo funciona',
     secondaryCtaHref: '#how-it-works',
@@ -20,9 +20,9 @@ export const b2bContent: LandingContent = {
       'Sin hardware',
       'Piloto a coste cero',
       '70% de ingresos para el artista',
-      'Setup en menos de 10 minutos',
+      'Onboarding en tu primer show',
     ],
-    microcopy: 'Sin compromiso. Sin tarjeta. Solo tu próximo show.',
+    microcopy: 'Te llamamos en menos de 24 h. Conversación de 15 min para encajar tu show.',
   },
   problem: {
     title: 'Cada show que das, alguien lo está arruinando en TikTok',
@@ -120,7 +120,7 @@ export const b2bContent: LandingContent = {
       {
         title: 'Activación',
         description:
-          'En la entrada del recinto, carteles con QR invitan al público a activar el Modo Show. Tú (o tu MC) lanzas el reto desde el escenario: "Guardad el móvil. Al salir, desbloqueáis el contenido exclusivo que preparé para quienes estuvieron de verdad."',
+          'En la entrada del recinto, carteles con QR invitan al público a activar el Modo Show. Tú (o tu MC) lanzas el reto desde el escenario. Soporte dedicado en tu primer show.',
       },
       {
         title: 'Resultado',
@@ -133,29 +133,19 @@ export const b2bContent: LandingContent = {
   urgency: {
     title:
       'El stand-up lo sabe. La música indie lo siente. Los teatros pequeños lo viven cada fin de semana.',
-    body: 'No necesitas un estadio de 20.000 personas para que el problema duela. En una sala de 200, un solo video viral puede destrozar meses de material nuevo.\n\nEstamos seleccionando 5 artistas o salas para el piloto de lanzamiento. Plataforma lista. Tú subes el contenido. Solo falta tu próximo show.',
-    scarcity:
-      'Plazas de piloto limitadas — estamos validando con shows reales, no con promesas.',
+    body: 'No necesitas un estadio de 20.000 personas para que el problema duela. En una sala de 200, un solo video viral puede destrozar meses de material nuevo.\n\nEstamos seleccionando 5 artistas o salas para el piloto de lanzamiento. Tú subes el contenido. Solo falta tu próximo show.',
+    scarcity: 'Plazas de piloto limitadas — acceso anticipado para los primeros shows.',
   },
-  testimonials: {
-    title: 'Lo que dicen quienes ya lo probaron',
-    items: [
-      {
-        quote:
-          'Por primera vez vi a toda la sala mirándome a los ojos en el callback. Y al día siguiente, 40 personas desbloquearon el contenido exclusivo.',
-        author: '[Nombre]',
-        role: 'Comediante de stand-up, [Ciudad]',
-        placeholder: true,
-      },
-      {
-        quote:
-          'Eliminamos las bolsas de la entrada. La fila bajó 15 minutos. El público salió contento y nosotros con un producto nuevo que vender.',
-        author: '[Nombre]',
-        role: 'Director de sala, [Ciudad]',
-        placeholder: true,
-      },
+  earlyAccess: {
+    title: 'Sé de los primeros en activar BeHere en tu sala',
+    body: 'El piloto gratuito incluye soporte dedicado para tu show: configuración, activación en sala y seguimiento post-evento.\n\nUna oportunidad para ser de los primeros en recuperar tu escenario.',
+    bullets: [
+      'Piloto a coste cero con reparto 70/30',
+      'Sin hardware ni instalación en tu sala',
+      'Contenido exclusivo que tú produces y controlas',
+      'Respuesta comercial en menos de 24 h',
     ],
-    footnote: 'Primeros pilotos en marcha — testimonios reales próximamente.',
+    footnote: '5 plazas para el piloto de lanzamiento.',
   },
   pricing: {
     title: 'Ganas cuando ganas. Literalmente.',
@@ -198,7 +188,7 @@ export const b2bContent: LandingContent = {
       {
         question: '¿Funciona sin internet durante el show?',
         answer:
-          'Sí. El Modo Show opera offline. La validación ocurre al salir del recinto, cuando hay conexión. Diseñado para salas con mala cobertura.',
+          'Pensado para salas con mala cobertura. En el piloto adaptamos la configuración a tu venue para que la experiencia funcione de principio a fin.',
       },
       {
         question: '¿Solo funciona para música?',
@@ -220,15 +210,15 @@ export const b2bContent: LandingContent = {
   finalCta: {
     title: 'Tu próximo show puede ser el primero sin pantallas',
     subtitle:
-      'Solicita acceso al piloto gratuito. Plataforma incluida. Sin compromiso.',
+      'Solicita acceso al piloto gratuito. Sin compromiso. Te llamamos en menos de 24 h.',
     cta: 'Solicitar mi piloto gratuito',
     riskReversal:
       'Sin tarjeta. Sin permanencia. Si el piloto no funciona para tu show, paramos ahí.',
   },
   pilotForm: {
-    microcopy: 'Sin compromiso. Sin tarjeta. Solo tu próximo show.',
+    microcopy: 'Te llamamos en menos de 24 h. Conversación de 15 min para encajar tu show.',
     successMessage:
-      'Recibido. Te contactamos en menos de 48 horas para coordinar tu piloto. Mientras tanto, tu escenario te espera.',
+      'Recibido. Te contactamos en menos de 24 h para una conversación breve y coordinar tu piloto.',
     actTypeOptions: ['Stand-up', 'Música indie', 'Teatro', 'Otro'],
   },
   stickyCta: 'Piloto gratuito',

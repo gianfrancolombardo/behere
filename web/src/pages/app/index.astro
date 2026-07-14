@@ -7,7 +7,7 @@ import StepsSection from '../../components/sections/StepsSection.astro';
 import ChallengeSection from '../../components/sections/ChallengeSection.astro';
 import RewardSection from '../../components/sections/RewardSection.astro';
 import ProfilesSection from '../../components/sections/ProfilesSection.astro';
-import TestimonialsSection from '../../components/sections/TestimonialsSection.astro';
+import EarlyAccessSection from '../../components/sections/EarlyAccessSection.astro';
 import FaqSection from '../../components/sections/FaqSection.astro';
 import FinalCta from '../../components/sections/FinalCta.astro';
 import BetaModal from '../../components/forms/BetaModal.astro';
@@ -33,7 +33,7 @@ const content = b2cContent;
   {content.challenge && <ChallengeSection challenge={content.challenge} />}
   {content.reward && <RewardSection reward={content.reward} />}
   {content.profiles && <ProfilesSection profiles={content.profiles} />}
-  <TestimonialsSection testimonials={content.testimonials} />
+  {content.earlyAccess && <EarlyAccessSection earlyAccess={content.earlyAccess} />}
   <FaqSection faq={content.faq} />
   <FinalCta
     finalCta={content.finalCta}

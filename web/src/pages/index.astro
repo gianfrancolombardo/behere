@@ -5,7 +5,7 @@ import ProblemSection from '../components/sections/ProblemSection.astro';
 import SolutionSection from '../components/sections/SolutionSection.astro';
 import StepsSection from '../components/sections/StepsSection.astro';
 import UrgencySection from '../components/sections/UrgencySection.astro';
-import TestimonialsSection from '../components/sections/TestimonialsSection.astro';
+import EarlyAccessSection from '../components/sections/EarlyAccessSection.astro';
 import PricingSection from '../components/sections/PricingSection.astro';
 import FaqSection from '../components/sections/FaqSection.astro';
 import FinalCta from '../components/sections/FinalCta.astro';
@@ -29,7 +29,7 @@ const content = b2bContent;
   <SolutionSection solution={content.solution} />
   <StepsSection steps={content.steps} variant="b2b" />
   {content.urgency && <UrgencySection urgency={content.urgency} />}
-  <TestimonialsSection testimonials={content.testimonials} />
+  {content.earlyAccess && <EarlyAccessSection earlyAccess={content.earlyAccess} />}
   {content.pricing && <PricingSection pricing={content.pricing} />}
   <FaqSection faq={content.faq} />
   <FinalCta
