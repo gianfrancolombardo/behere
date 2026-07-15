@@ -86,7 +86,7 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 **Acciones:**
 - Añadir consentimiento explícito antes de guardar email.
 - Enlazar aviso de privacidad mínimo.
-- Definir retención y quién responde en <24 h.
+- Definir retención y quién responde en un máximo de 48 h laborables.
 
 **Criterios de aceptación:**
 - [x] No se guarda email sin consentimiento.
@@ -197,7 +197,7 @@ No avanzar a la siguiente tarea hasta cumplir los criterios de aceptación de la
 **Criterios de aceptación:**
 - [ ] Gate 0 del plan cumplido en su totalidad.
 - [ ] Checklist de handoff completado y compartido con Deni.
-- [ ] Tiempo de respuesta comercial <24 h acordado.
+- [ ] Tiempo de respuesta comercial (48 h laborables) acordado.
 
 ---
 
@@ -267,7 +267,7 @@ Marcar todo antes de decir “listo para captar”:
 - [x] CRM exportable operativo
 - [ ] Gem compartida con Deni + smoke test (`test-cases-v1.md` caso 1)
 - [ ] 3 pruebas IA sin alucinaciones
-- [x] Responsable de respuesta <24 h definido
+- [x] Responsable de respuesta comercial definido (máx. 48 h laborables)
 - [x] Dominio `trybehere.com` registrado
 - [x] DNS apuntando a producción con HTTPS
 

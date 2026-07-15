@@ -22,7 +22,7 @@ export const b2bContent: LandingContent = {
       '70% de ingresos para el artista',
       'Onboarding en tu primer show',
     ],
-    microcopy: 'Te llamamos en menos de 24 h. Conversación de 15 min para encajar tu show.',
+    microcopy: 'Te llamamos en un máximo de 48 h laborables. Conversación de 15 min para encajar tu show.',
   },
   problem: {
     title: 'Cada show que das, alguien lo está arruinando en TikTok',
@@ -143,7 +143,7 @@ export const b2bContent: LandingContent = {
       'Piloto a coste cero con reparto 70/30',
       'Sin hardware ni instalación en tu sala',
       'Contenido exclusivo que tú produces y controlas',
-      'Respuesta comercial en menos de 24 h',
+      'Respuesta comercial en un máximo de 48 h laborables',
     ],
     footnote: '5 plazas para el piloto de lanzamiento.',
   },
@@ -210,15 +210,15 @@ export const b2bContent: LandingContent = {
   finalCta: {
     title: 'Tu próximo show puede ser el primero sin pantallas',
     subtitle:
-      'Solicita acceso al piloto gratuito. Sin compromiso. Te llamamos en menos de 24 h.',
+      'Solicita acceso al piloto gratuito. Sin compromiso. Te llamamos en un máximo de 48 h laborables.',
     cta: 'Solicitar mi piloto gratuito',
     riskReversal:
       'Sin tarjeta. Sin permanencia. Si el piloto no funciona para tu show, paramos ahí.',
   },
   pilotForm: {
-    microcopy: 'Te llamamos en menos de 24 h. Conversación de 15 min para encajar tu show.',
+    microcopy: 'Te llamamos en un máximo de 48 h laborables. Conversación de 15 min para encajar tu show.',
     successMessage:
-      'Recibido. Te contactamos en menos de 24 h para una conversación breve y coordinar tu piloto.',
+      'Recibido. Te contactamos en un máximo de 48 h laborables para una conversación breve y coordinar tu piloto.',
     actTypeOptions: ['Stand-up', 'Música indie', 'Teatro', 'Otro'],
   },
   stickyCta: 'Piloto gratuito',

@@ -4,10 +4,10 @@
 
 | Rol | Persona | Alcance |
 |-----|---------|---------|
-| Respuesta comercial | Deni | Consultas de artistas, salas y fans. Compromiso < 24 h laborables. |
+| Respuesta comercial | Denielly | Consultas de artistas, salas y fans. Compromiso: máximo 48 h laborables. |
 | Datos y formularios | Gian | Web3Forms, exportación de leads, página `/privacidad`, Umami Analytics. |
 
-**Contacto:** contacto@behere.app
+**Contacto:** contacto@behere.com
 
 ## Consentimiento
 
@@ -17,7 +17,7 @@
 ## Retención
 
 - Datos conservados durante la fase de validación del piloto.
-- Baja o supresión a solicitud vía contacto@behere.app.
+- Baja o supresión a solicitud vía contacto@behere.com.
 
 ## Analítica
 

@@ -14,7 +14,7 @@ Documento interno. No es copy de landing.
 | Secundaria | % submits → entrevista realizada |
 | Cualitativa | Motivo de rechazo en llamada |
 
-**Owner comercial:** Deni — respuesta < 24 h.
+**Owner comercial:** Denielly — respuesta en un máximo de 48 h laborables.
 
 ---
 
@@ -30,7 +30,7 @@ Documento interno. No es copy de landing.
 | Secundaria | Distribución geográfica de demanda |
 | Uso operativo | Elegir ciudad del primer piloto conserje |
 
-**Owner comercial:** Deni — respuesta < 24 h para consultas.
+**Owner comercial:** Denielly — respuesta en un máximo de 48 h laborables para consultas.
 
 ---
 

@@ -3,13 +3,98 @@
 > **Referencia:** [validation-to-first-revenue-plan.md](./validation-to-first-revenue-plan.md)  
 > **Alcance:** Fase 0 (arranque) + Fase 1 (captación y validación B2B)  
 > **Tu trabajo:** captar, entrevistar, calificar, conseguir compromiso de piloto y cerrar. No landings, no código, no informes cuantitativos.  
-> **Duración orientativa:** 2–4 h en Fase 0; luego 1–2 h/día durante 2 semanas
+> **Duración orientativa:** 2–4 h en Fase 0; luego 1–2 h/día durante 2 semanas  
+> **Gate 0:** cerrado por Gian el 2026-07-15 — podés empezar captación.
+
+---
+
+## Lo que Gian dejó listo (handoff Gate 0)
+
+Resumen de lo construido en Fase 0. **No necesitás tocar código ni landings**; tu trabajo empieza en CRM + outreach.
+
+### Sitio en producción
+
+| Qué | URL | Para qué lo usás |
+|-----|-----|------------------|
+| Landing B2B (artistas, salas) | https://trybehere.com | Enviar en outreach; CTA = solicitar piloto |
+| Landing B2C (fans) | https://trybehere.com/app | Solo si hace falta waitlist en un show |
+| Privacidad | https://trybehere.com/privacidad | Referencia si preguntan por datos |
+
+Dominio `trybehere.com` con HTTPS activo. Copy alineado con piloto web asistido — **no promete app instalada ni detección automática**.
+
+### Formularios y leads
+
+- Los formularios **guardan leads de verdad** (Web3Forms). Ya se probó B2B y B2C.
+- Cada envío incluye: email, nombre (B2B), ciudad, tipo de acto/show, timestamp, landing y **UTM** si entraron por QR o link etiquetado.
+- Checkbox de consentimiento obligatorio; sin consentimiento no se guarda nada.
+- **Vos respondés consultas comerciales en un máximo de 48 h laborables** (ver `head/ops/privacidad-operativa.md`). Gian responde temas técnicos de datos.
+
+### Analítica (Umami)
+
+Gian instrumentó el embudo. Vos no entrás a la consola del navegador; si hace falta revisar tráfico, pedile a Gian un pantallazo o export.
+
+Eventos que se registran solos:
+
+- Visitas a `/` y `/app`
+- Clics en botones principales
+- Envíos de formulario (éxito y error)
+
+Los UTM de QR o links etiquetados viajan en los eventos y en el lead. Detalle en `head/ops/analytics-events.md`.
+
+### CRM
+
+- **Hoja:** [BeHere CRM B2B](https://docs.google.com/spreadsheets/d/1EMn4J-KOSb-L48-y15rUnicn3DlDeyuxlREZuSneOE4/edit?usp=sharing)
+- Exportable a CSV; columnas de etapa, fuente, siguiente acción, borrador IA, mensaje enviado, etc.
+- Etapas: Identificado → Contactado → Respondió → Entrevistado → Calificado → Piloto propuesto → Piloto comprometido → Pagado → Perdido.
+
+Actualizalo cada día antes de cerrar.
+
+### Asistente IA (Gemini Gem)
+
+- **Gem:** [BeHere — Prospecting v1](https://gemini.google.com/gem/7d8896898d3f)
+- Prompts versionados (qué usar en cada paso): `head/prompts/README.md`
+- Guion de entrevista fijo: `head/prompts/interview-script.md`
+- Reglas (no inventar datos): `head/prompts/guardrails.md`
+
+La Gem redacta borradores; **vos verificás, editás y enviás**. Si la IA inventa un dato, se descarta aunque suene bien.
+
+### QR para materiales impresos
+
+Carpeta `head/ops/qr/` (también en el repo):
+
+| Archivo | Destino al escanear |
+|---------|---------------------|
+| `b2b-outreach.png` | Landing B2B con UTM `b2b-outreach` |
+| `b2c-pilot.png` | Landing B2C con UTM `b2c-pilot` |
+
+Úsalos en tarjetas, flyers o sala cuando tenga sentido. No son obligatorios para el outreach inicial por DM/email.
+
+### CTAs — qué mide cada uno
+
+Documentado en `head/plans/cta-hypotheses.md`:
+
+- **B2B:** conversación de 15–20 min para piloto gratuito (tu trabajo).
+- **B2C:** waitlist + ciudad (demanda geográfica). No mezclar métricas B2B y B2C.
+
+### Qué NO está listo (no prometas esto)
+
+- App instalada ni detección automática de móviles
+- MVP de evento en vivo (empieza cuando haya show comprometido)
+- Pilotos ejecutados ni clientes pagadores
+- Panel para artistas, pagos integrados, ads
+
+### Soporte de Gian en Fase 1
+
+- Dudas de CRM, prompts o Gem → respuesta en < 24 h
+- Cambios de copy en landings solo con evidencia tuya (objeciones repetidas en entrevistas)
+- Revisión semanal de calidad de borradores IA
+- Informes cuantitativos y configuración técnica → Gian, no vos
 
 ---
 
 ## Cómo usar este documento
 
-1. Lee primero **“Por dónde empezar hoy”**.
+1. Lee primero **“Lo que Gian dejó listo”** y **“Por dónde empezar hoy”**.
 2. Trabaja en **paquetes** (bloques de 45–90 min), no en tareas sueltas.
 3. Usa la Gem de Gemini como asistente, no como decisor.
 4. Todo mensaje se revisa y se envía manualmente.
@@ -21,26 +106,23 @@
 
 ## Por dónde empezar hoy
 
-### Si Gian aún no terminó Gate 0
+Gate 0 está cerrado. **Podés enviar outreach.**
 
-Haz solo esto (2–3 h):
+### Día 1 (orden recomendado)
 
-1. Define tu ICP operativo (15 min).
-2. Abre el CRM que Gian te comparta.
-3. Investiga y carga **20 prospectos** con fuente verificable.
-4. Prepara borradores de mensaje, pero **no envíes** hasta confirmar que los formularios guardan leads.
+1. Abrí el [CRM](https://docs.google.com/spreadsheets/d/1EMn4J-KOSb-L48-y15rUnicn3DlDeyuxlREZuSneOE4/edit?usp=sharing) y la [Gem](https://gemini.google.com/gem/7d8896898d3f).
+2. Lee `head/prompts/README.md` (5 min) — saber qué prompt pedir en cada paso.
+3. Define tu ICP operativo (15 min) — sección más abajo.
+4. Si aún no tenés lista: carga **20 prospectos** con `source_url` verificable.
+5. Envía **8–10 contactos** personalizados (Prompt 01 → verificar → Prompt 02 → editar → enviar).
+6. Agenda primeras entrevistas; registra en CRM tiempo, cambios al borrador IA y respuestas.
 
-### Si Gian ya cerró Gate 0
+**No contactes voluntarios de Uruguay todavía.** Primero entrevistas y, idealmente, un show candidato con fecha.
 
-Haz esto en orden (día 1):
+### Si preferís calentar sin enviar (opcional)
 
-1. Revisa la [Gem BeHere Prospecting](https://gemini.google.com/gem/7d8896898d3f) y los prompts v1 en `head/prompts/`.
-2. Valida 3 filas del CRM con fuentes reales.
-3. Envía **8–10 contactos** personalizados.
-4. Agenda primeras entrevistas.
-5. Registra tiempo, cambios al borrador IA y respuestas.
-
-**No contactes voluntarios de Uruguay todavía.** Primero necesitas entrevistas y, idealmente, un show candidato.
+1. ICP + 20 prospectos en CRM.
+2. Borradores con la Gem, pero **sin enviar** hasta sentirte cómoda con el flujo.
 
 ---
 
